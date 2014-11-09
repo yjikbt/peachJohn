@@ -48,11 +48,12 @@ class TopScene: SKScene {
             let node = self.nodeAtPoint(location)
             
             if node.name == "girlTop"{
+                //妄想シーンに移動
                 let push:SKTransition = SKTransition.revealWithDirection(SKTransitionDirection.Left, duration: 0.5)
-                var topScene:TopScene = TopScene(size:self.size)
-                topScene.scaleMode = SKSceneScaleMode.AspectFill
+                var imagineScene:ImagineScene = ImagineScene(size:self.size)
+                imagineScene.scaleMode = SKSceneScaleMode.AspectFill
                 
-                self.view?.presentScene(topScene,transition: push)
+                self.view?.presentScene(imagineScene,transition: push)
             }
         }
         
