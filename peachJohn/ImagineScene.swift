@@ -28,6 +28,7 @@ class ImagineScene: SKScene {
         
         addChild(girlLabelName)
         
+        //文字色を変えるアニメーション
         let fadeInStart:SKAction = SKAction.fadeInWithDuration(1.5)
         let fadeOut:SKAction = SKAction.fadeOutWithDuration(1.6)
         let changeFontColor:SKAction = SKAction.runBlock(
@@ -39,35 +40,41 @@ class ImagineScene: SKScene {
         let changeFontColorAnimation:SKAction = SKAction.sequence([fadeInStart,fadeOut,changeFontColor,fadeInEnd])
         
         girlLabelName.runAction(changeFontColorAnimation)
-        //sprite化
-//        let labelTexture:SKTexture = self.view?.textureFromNode(girlLabelName)
-//        let spriteNode:SKSpriteNode = SKSpriteNode(texture: labelTexture,size:girlLabelName.frame.size)
-//        
-//        spriteNode.anchorPoint = CGPointZero
-//        spriteNode.position = girlLabelName.frame.origin
-//        addChild(spriteNode)
-//        
-//        
-//        let colorAnimation:SKAction = SKAction.colorizeWithColor(SKColor.whiteColor(), colorBlendFactor: 0, duration: 1.0)
-//        
-//        girlLabelName.runAction(colorAnimation)
-        
-        
     }
     func addBackground(){
         let SCREEN_WIDTH = self.frame.size.width
         let SCREEN_HEIGHT = self.frame.size.height
-        let animationDuration = 1.0
+        let moveDuration = 6.0
+        let fadeOutDuration = 5.0
+        let fadeTransitionDuration = 5.5
+        
+        //背景を設置
         let bg = SKSpriteNode(color:UIColor.blackColor(),size:CGSizeMake(SCREEN_WIDTH,SCREEN_HEIGHT))
         bg.position = CGPoint(x: CGRectGetMidX(self.frame),y: -SCREEN_HEIGHT / 2)
         
         addChild(bg)
         
+        //背景がトップへ上ってくるやつ
         let topPos:CGPoint = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
-        let moveToTop:SKAction = SKAction.moveTo(topPos,duration:animationDuration)
+        let moveToTop:SKAction = SKAction.moveTo(topPos,duration:moveDuration)
+        moveToTop.timingMode = SKActionTimingMode.EaseInEaseOut
+        
+        //フェードアウト
+        let fadeOut:SKAction = SKAction.fadeOutWithDuration(fadeOutDuration)
+        
+        //ホームへ遷移
+        let transitionAnimation:SKAction = SKAction.runBlock({
+            var topScene:TopScene = TopScene(size:self.size)
+            topScene.scaleMode = SKSceneScaleMode.AspectFill
+            let fadeTransition:SKTransition = SKTransition.fadeWithColor(SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0), duration: fadeTransitionDuration)
+            
+            self.view?.presentScene(topScene, transition: fadeTransition)
+        })
+        
+        let changeBackgroundAnimation:SKAction = SKAction.sequence([moveToTop,fadeOut,transitionAnimation])
         
         //アニメーション実行
-        bg.runAction(moveToTop)
+        bg.runAction(changeBackgroundAnimation)
     }
 }
 
