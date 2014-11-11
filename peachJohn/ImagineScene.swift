@@ -11,19 +11,24 @@ import SpriteKit
 class ImagineScene: SKScene {
     override func didMoveToView(view: SKView) {
         //背景
-        self.backgroundColor = SKColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 1.0)
+        self.backgroundColor = SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0)
+        self.scaleMode = SKSceneScaleMode.AspectFill
         
         var girlName:String = "AYAKA"
+        var pantyColor = SKColor(red: 0, green: 0, blue: 0, alpha: 1.0)
         addGirlName(girlName)
-        addBackground()
+        addBackground(pantyColor)
     }
    
     func addGirlName(name:String){
+        let initNameColor = 0.28
+        let endNameColor = 0.94
         //女の子の名前をセット
         let girlLabelName = SKLabelNode(fontNamed:"HelveticaNeue")
         girlLabelName.text = name
         girlLabelName.fontSize = 50
-        girlLabelName.fontColor = SKColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0)
+//        girlLabelName.fontColor = SKColor(red: initNameColor, green: initNameColor, blue: initNameColor, alpha: 1.0)
+        girlLabelName.fontColor = SKColor(red: 0.28, green: 0.28, blue: 0.28, alpha: 1.0)
         girlLabelName.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
         
         addChild(girlLabelName)
@@ -33,7 +38,7 @@ class ImagineScene: SKScene {
         let fadeOut:SKAction = SKAction.fadeOutWithDuration(1.6)
         let changeFontColor:SKAction = SKAction.runBlock(
             {
-                girlLabelName.fontColor = SKColor(red: 255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0)
+                girlLabelName.fontColor = SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0)
         })
         let fadeInEnd:SKAction = SKAction.fadeInWithDuration(1.5)
         
@@ -41,7 +46,7 @@ class ImagineScene: SKScene {
         
         girlLabelName.runAction(changeFontColorAnimation)
     }
-    func addBackground(){
+    func addBackground(pantyColor:UIColor){
         let SCREEN_WIDTH = self.frame.size.width
         let SCREEN_HEIGHT = self.frame.size.height
         let moveDuration = 6.0
@@ -49,7 +54,7 @@ class ImagineScene: SKScene {
         let fadeTransitionDuration = 5.5
         
         //背景を設置
-        let bg = SKSpriteNode(color:UIColor.blackColor(),size:CGSizeMake(SCREEN_WIDTH,SCREEN_HEIGHT))
+        let bg = SKSpriteNode(color:pantyColor,size:CGSizeMake(SCREEN_WIDTH,SCREEN_HEIGHT))
         bg.position = CGPoint(x: CGRectGetMidX(self.frame),y: -SCREEN_HEIGHT / 2)
         
         addChild(bg)
