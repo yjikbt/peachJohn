@@ -16,8 +16,12 @@ class ImagineScene: SKScene {
         
         var girlName:String = "AYAKA"
         var pantyColor = SKColor(red: 0, green: 0, blue: 0, alpha: 1.0)
+        
+        //モデルからインスタンスを生成
+        var panty:pantyColorModel = pantyColorModel()
+        
         addGirlName(girlName)
-        addBackground(pantyColor)
+        addBackground(panty.colorArray[0])
     }
    
     func addGirlName(name:String){

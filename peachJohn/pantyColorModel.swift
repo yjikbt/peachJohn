@@ -14,7 +14,8 @@ class pantyColorModel: NSObject {
     var isDarkColor:Bool!
    
     
-//    var colorArray:SKColor = [SKColor(red: 200/255.0, 200/255.0, blue: 200.0/255.0, alpha: 1.0)]
+    var colorArray = [SKColor(red: 200/255.0, green: 200/255.0, blue: 200.0/255.0, alpha: 1.0)]
+    
     func getColorIndexNum() -> Int{
         var num:Int = Int(arc4random() % 24)
         
