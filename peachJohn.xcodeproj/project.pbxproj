@@ -15,6 +15,7 @@
 		1151CA7519E4235300750B7C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1151CA7419E4235300750B7C /* Images.xcassets */; };
 		1151CA7819E4235300750B7C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1151CA7619E4235300750B7C /* LaunchScreen.xib */; };
 		1151CA8419E4235300750B7C /* peachJohnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1151CA8319E4235300750B7C /* peachJohnTests.swift */; };
+		9A5D341A1A118E0300D6A821 /* pantyColorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D34191A118E0300D6A821 /* pantyColorModel.swift */; };
 		9A63ACEB1A102C800038153B /* ImagineScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A63ACEA1A102C800038153B /* ImagineScene.swift */; };
 		9AE943511A0F9AF4004AC409 /* purple_cat.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9AE9434E1A0F9AF4004AC409 /* purple_cat.jpeg */; };
 		9AE943521A0F9AF4004AC409 /* mono_cat.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9AE9434F1A0F9AF4004AC409 /* mono_cat.jpeg */; };
@@ -45,6 +46,7 @@
 		1151CA7D19E4235300750B7C /* peachJohnTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = peachJohnTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1151CA8219E4235300750B7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1151CA8319E4235300750B7C /* peachJohnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = peachJohnTests.swift; sourceTree = "<group>"; };
+		9A5D34191A118E0300D6A821 /* pantyColorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pantyColorModel.swift; sourceTree = "<group>"; };
 		9A63ACEA1A102C800038153B /* ImagineScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineScene.swift; sourceTree = "<group>"; };
 		9AE9434E1A0F9AF4004AC409 /* purple_cat.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = purple_cat.jpeg; sourceTree = "<group>"; };
 		9AE9434F1A0F9AF4004AC409 /* mono_cat.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mono_cat.jpeg; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				1151CA7619E4235300750B7C /* LaunchScreen.xib */,
 				1151CA6719E4235300750B7C /* Supporting Files */,
 				9A63ACEA1A102C800038153B /* ImagineScene.swift */,
+				9A5D34191A118E0300D6A821 /* pantyColorModel.swift */,
 			);
 			path = peachJohn;
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A5D341A1A118E0300D6A821 /* pantyColorModel.swift in Sources */,
 				1151CA6E19E4235300750B7C /* GameScene.swift in Sources */,
 				1151CA7019E4235300750B7C /* GameViewController.swift in Sources */,
 				9AE943551A0F9B4F004AC409 /* TopScene.swift in Sources */,
