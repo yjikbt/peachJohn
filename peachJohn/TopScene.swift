@@ -13,6 +13,7 @@ class TopScene: SKScene {
     override func didMoveToView(view: SKView) {
         //背景
         self.backgroundColor = SKColor(red: 200/255.0, green: 200/255.0, blue: 200.0/255.0, alpha: 1.0)
+        self.scaleMode = SKSceneScaleMode.AspectFill
         
         let girlTopBtn = SKLabelNode(fontNamed:"HelveticaNeue")
         girlTopBtn.text = "YURI"

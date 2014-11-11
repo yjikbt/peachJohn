@@ -15,6 +15,7 @@ class GameScene: SKScene {
         /* Setup your scene here */
         //背景
         self.backgroundColor = SKColor(red: 200/255.0, green: 200/255.0, blue: 200.0/255.0, alpha: 1.0)
+        self.scaleMode = SKSceneScaleMode.AspectFill
         //待ち時間
         let titleTime:NSTimeInterval = 1.0
         let iconTime:NSTimeInterval = 2.0
