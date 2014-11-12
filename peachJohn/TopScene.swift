@@ -12,9 +12,8 @@ import SpriteKit
 class TopScene: SKScene {
     override func didMoveToView(view: SKView) {
         //背景
-        self.backgroundColor = SKColor(red: 200/255.0, green: 200/255.0, blue: 200.0/255.0, alpha: 1.0)
+        self.backgroundColor = SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0)
         self.scaleMode = SKSceneScaleMode.AspectFill
-        
         
         //ユーザデフォルト
         let ud = NSUserDefaults.standardUserDefaults()
@@ -30,9 +29,9 @@ class TopScene: SKScene {
             let girlNameBtn = SKLabelNode(fontNamed:"DINAlternate-Bold")
             //ユーザデフォルトから名前を取得
             girlNameBtn.text = String(girlNameArray[i] as NSString)
-            girlNameBtn.name = "girlTop"
+            girlNameBtn.name = "girlName"
             girlNameBtn.fontSize = 50
-            girlNameBtn.fontColor = SKColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0)
+            girlNameBtn.fontColor = SKColor(red: 0.28, green: 0.28, blue: 0.28, alpha: 1.0)
             girlNameBtn.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame) * 0.5 * cnt)
             
             self.addChild(girlNameBtn)
@@ -40,17 +39,17 @@ class TopScene: SKScene {
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        //タッチする指の本数は任意
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
             let node = self.nodeAtPoint(location)
             
-            if node.name == "girlTop"{
+            if node.name == "girlName"{
                 //妄想シーンに移動
-                let push:SKTransition = SKTransition.revealWithDirection(SKTransitionDirection.Left, duration: 0.5)
+//                let fade:SKTransition = SKTransition.fadeWithDuration(2.0)
                 var imagineScene:ImagineScene = ImagineScene(size:self.size)
-                imagineScene.scaleMode = SKSceneScaleMode.AspectFill
                 
-                self.view?.presentScene(imagineScene,transition: push)
+                self.view?.presentScene(imagineScene)
             }
         }
         
