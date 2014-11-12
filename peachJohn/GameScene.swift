@@ -18,7 +18,7 @@ class GameScene: SKScene {
         var initGirlName:[String] = ["AYA","YURI","TOMOKA"]
         ud.setObject(initGirlName, forKey: "girlNameArray")
         //背景
-        self.backgroundColor = SKColor(red: 200/255.0, green: 200/255.0, blue: 200.0/255.0, alpha: 1.0)
+        self.backgroundColor = SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0)
         self.scaleMode = SKSceneScaleMode.AspectFill
         //待ち時間
         let titleTime:NSTimeInterval = 1.0
@@ -91,7 +91,15 @@ class GameScene: SKScene {
         self.addChild(mes3)
         
         let wait3:SKAction = SKAction.waitForDuration(waitTime + (animationDuration * 2 + waitTime) * 2)
-        let fadeInOut3:SKAction = SKAction.sequence([zeroAlpha,wait3,fadeIn,fadeOut])
+        
+        let transitionTopScene:SKAction = SKAction.runBlock({
+            //トップページに遷移
+            let fadeTransition:SKTransition = SKTransition.fadeWithColor(self.backgroundColor, duration: 6.0)
+            var topScene:TopScene = TopScene(size:self.size)
+            self.view?.presentScene(topScene, transition: fadeTransition)
+        })
+        
+        let fadeInOut3:SKAction = SKAction.sequence([zeroAlpha,wait3,fadeIn,fadeOut,transitionTopScene])
         mes3.runAction(fadeInOut3)
     }
     
