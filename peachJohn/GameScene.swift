@@ -13,6 +13,10 @@ class GameScene: SKScene {
     //time
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
+        //ユーザデフォルト
+        let ud = NSUserDefaults.standardUserDefaults()
+        var initGirlName:[String] = ["AYA","YURI","TOMOKA"]
+        ud.setObject(initGirlName, forKey: "girlNameArray")
         //背景
         self.backgroundColor = SKColor(red: 200/255.0, green: 200/255.0, blue: 200.0/255.0, alpha: 1.0)
         self.scaleMode = SKSceneScaleMode.AspectFill

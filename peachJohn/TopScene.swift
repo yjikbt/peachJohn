@@ -15,32 +15,28 @@ class TopScene: SKScene {
         self.backgroundColor = SKColor(red: 200/255.0, green: 200/255.0, blue: 200.0/255.0, alpha: 1.0)
         self.scaleMode = SKSceneScaleMode.AspectFill
         
-        let girlTopBtn = SKLabelNode(fontNamed:"HelveticaNeue")
-        girlTopBtn.text = "YURI"
-        girlTopBtn.name = "girlTop"
-        girlTopBtn.fontSize = 50
-        girlTopBtn.fontColor = SKColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0)
-        girlTopBtn.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame) * 1.5)
         
-        self.addChild(girlTopBtn)
+        //ユーザデフォルト
+        let ud = NSUserDefaults.standardUserDefaults()
+        var girlNameArray = ud.arrayForKey("girlNameArray")
         
-        let girlMiddleBtn = SKLabelNode(fontNamed:"HelveticaNeue")
-        girlMiddleBtn.text = "AYAKA"
-        girlMiddleBtn.name = "girlMiddle"
-        girlMiddleBtn.fontSize = 50
-        girlMiddleBtn.fontColor = SKColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0)
-        girlMiddleBtn.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
-        
-        self.addChild(girlMiddleBtn)
-        
-        let girlBottomBtn = SKLabelNode(fontNamed:"HelveticaNeue")
-        girlBottomBtn.text = "AI"
-        girlBottomBtn.name = "girlBottom"
-        girlBottomBtn.fontSize = 50
-        girlBottomBtn.fontColor = SKColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0)
-        girlBottomBtn.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame) / 2)
-        
-        self.addChild(girlBottomBtn)
+        //名前をセット
+        addGirlName(girlNameArray!)
+    }
+    
+    func addGirlName(girlNameArray:NSArray){
+        for var i = 0; i < 3; i++ {
+            var cnt:CGFloat = CGFloat(3 - i)
+            let girlNameBtn = SKLabelNode(fontNamed:"DINAlternate-Bold")
+            //ユーザデフォルトから名前を取得
+            girlNameBtn.text = String(girlNameArray[i] as NSString)
+            girlNameBtn.name = "girlTop"
+            girlNameBtn.fontSize = 50
+            girlNameBtn.fontColor = SKColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0)
+            girlNameBtn.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame) * 0.5 * cnt)
+            
+            self.addChild(girlNameBtn)
+        }
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
