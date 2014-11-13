@@ -25,6 +25,9 @@ class TopScene: SKScene {
         
         //設定ボタンをセット
         addSettingBtn()
+        
+        //infoボタンをセット
+        addInfoBtn()
         //名前をセット
         addGirlName(girlNameArray!)
     }
@@ -42,6 +45,16 @@ class TopScene: SKScene {
             
             self.addChild(girlNameBtn)
         }
+    }
+    
+    func addInfoBtn(){
+        let infoBtn = SKSpriteNode(imageNamed: "cat114")
+        infoBtn.size = CGSizeMake(40, 40)
+        infoBtn.position = CGPoint(x:350, y:50)
+        println(infoBtn.position)
+        infoBtn.name = "infoBtn"
+        
+        self.addChild(infoBtn)
     }
     
     func addSettingBtn(){
