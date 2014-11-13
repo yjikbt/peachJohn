@@ -93,12 +93,18 @@ class TopScene: SKScene {
             
             if node.name == "girlName"{
                 //妄想シーンに移動
-//                let fade:SKTransition = SKTransition.fadeWithDuration(2.0)
                 var imagineScene:ImagineScene = ImagineScene(size:self.size)
                 
                 self.view?.presentScene(imagineScene)
             }else if(node.name == "settingBtn"){
                 switchSetting()
+                
+            }else if(node.name == "infoBtn"){
+                //infoシーンに移動
+                let upTransition:SKTransition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 0.5)
+                var infoScene:InfoScene = InfoScene(size:self.size)
+                
+                self.view?.presentScene(infoScene, transition: upTransition)
                 
             }
         }
