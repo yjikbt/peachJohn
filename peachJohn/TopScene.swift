@@ -101,10 +101,10 @@ class TopScene: SKScene {
                 
             }else if(node.name == "infoBtn"){
                 //infoシーンに移動
-                let upTransition:SKTransition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 0.5)
+                let revealTransition:SKTransition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 0.5)
                 var infoScene:InfoScene = InfoScene(size:self.size)
                 
-                self.view?.presentScene(infoScene, transition: upTransition)
+                self.view?.presentScene(infoScene, transition: revealTransition)
                 
             }
         }

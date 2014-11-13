@@ -18,5 +18,12 @@ class InfoScene: SKScene {
         self.addChild(mes)
     }
     
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        let moveInTransition:SKTransition = SKTransition.moveInWithDirection(SKTransitionDirection.Up, duration: 0.5)
+        let topScene:TopScene = TopScene(size:self.size)
+        
+        self.view?.presentScene(topScene, transition: moveInTransition)
+        
+    }
 }
 
