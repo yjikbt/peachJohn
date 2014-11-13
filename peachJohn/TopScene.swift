@@ -10,6 +10,10 @@ import UIKit
 import SpriteKit
 
 class TopScene: SKScene {
+    var settingBtn:SKSpriteNode!
+    var isSetting:Bool = false
+    var isMoving:Bool = true
+    
     override func didMoveToView(view: SKView) {
         //背景
         self.backgroundColor = SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0)
@@ -41,7 +45,7 @@ class TopScene: SKScene {
     }
     
     func addSettingBtn(){
-        let settingBtn = SKSpriteNode(imageNamed: "cat114")
+        settingBtn = SKSpriteNode(imageNamed: "cat114")
         settingBtn.size = CGSizeMake(100, 100)
         settingBtn.position = CGPoint(x:CGRectGetMaxY(self.frame) - 100, y:CGRectGetMaxY(self.frame) - 50);
         println(settingBtn.position)
@@ -49,6 +53,25 @@ class TopScene: SKScene {
         
         self.addChild(settingBtn)
     }
+    
+    func switchSetting(){
+        
+        if(isSetting){
+            isSetting = false
+            
+            settingBtn.removeAllActions()
+            
+            
+        }else{
+            isSetting = true
+            
+            //回転アニメーション
+            let rotate:SKAction = SKAction.rotateByAngle(-0.2, duration: 0.1)
+            let loop:SKAction = SKAction.repeatActionForever(rotate)
+            settingBtn.runAction(loop)
+        }
+    }
+    
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         //タッチする指の本数は任意
         for touch: AnyObject in touches {
@@ -61,6 +84,9 @@ class TopScene: SKScene {
                 var imagineScene:ImagineScene = ImagineScene(size:self.size)
                 
                 self.view?.presentScene(imagineScene)
+            }else if(node.name == "settingBtn"){
+                switchSetting()
+                
             }
         }
         
