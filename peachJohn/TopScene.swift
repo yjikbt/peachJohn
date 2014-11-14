@@ -86,21 +86,36 @@ class TopScene: SKScene {
         }
     }
     
+    func popActions(touchedGirlName:SKNode){
+        if(isMoving){
+            //ポップアニメーション
+            let scale:SKAction = SKAction.scaleTo(1.1, duration: 0.1)
+            let unscale:SKAction = SKAction.scaleTo(1.0, duration: 0.1)
+            let wait:SKAction = SKAction.waitForDuration(0.2)
+            
+            let popAction:SKAction = SKAction.sequence([scale,unscale,wait])
+            
+            touchedGirlName.runAction(popAction)
+            
+        }
+    }
+    
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         //タッチする指の本数は任意
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
-            let node = self.nodeAtPoint(location)
+            let touchedNode = self.nodeAtPoint(location)
             
-            if node.name == "girlName0" || node.name == "girlName1" || node.name == "girlName2"{//正規表現で判定したいけど、かえって冗長になりそう
+            if touchedNode.name == "girlName0" || touchedNode.name == "girlName1" || touchedNode.name == "girlName2"{//正規表現で判定したいけど、かえって冗長になりそう
+                popActions(touchedNode)
                 //妄想シーンに移動
-                var imagineScene:ImagineScene = ImagineScene(size:self.size)
-                
-                self.view?.presentScene(imagineScene)
-            }else if(node.name == "settingBtn"){
+//                var imagineScene:ImagineScene = ImagineScene(size:self.size)
+//                
+//                self.view?.presentScene(imagineScene)
+            }else if(touchedNode.name == "settingBtn"){
                 switchSetting()
                 
-            }else if(node.name == "infoBtn"){
+            }else if(touchedNode.name == "infoBtn"){
                 //infoシーンに移動
                 let revealTransition:SKTransition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 0.5)
                 var infoScene:InfoScene = InfoScene(size:self.size)
