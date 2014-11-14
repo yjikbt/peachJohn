@@ -8,6 +8,7 @@
 
 import UIKit
 import SpriteKit
+import Foundation
 
 class TopScene: SKScene {
     var settingBtn:SKSpriteNode!
@@ -38,7 +39,7 @@ class TopScene: SKScene {
             let girlNameBtn = SKLabelNode(fontNamed:"DINAlternate-Bold")
             //ユーザデフォルトから名前を取得
             girlNameBtn.text = String(girlNameArray[i] as NSString)
-            girlNameBtn.name = "girlName"
+            girlNameBtn.name = "girlName" + String(i)
             girlNameBtn.fontSize = 50
             girlNameBtn.fontColor = SKColor(red: 0.28, green: 0.28, blue: 0.28, alpha: 1.0)
             girlNameBtn.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame) * 0.5 * cnt)
@@ -109,5 +110,18 @@ class TopScene: SKScene {
             }
         }
         
+    }
+    
+    override func update(currentTime: NSTimeInterval) {
+        for var i = 0; i < 3; i++ {
+            var cnt:CGFloat = CGFloat(3 - i)
+            //ゆらぎパラメータ
+            var parameter:CGFloat = sin(CGFloat(currentTime) + 30 * CGFloat(i)) / 10
+            var girlNameBtn: SKLabelNode = childNodeWithName("girlName" + String(i)) as SKLabelNode
+            
+            //X軸方向にゆらぎ
+            girlNameBtn.position.x += parameter
+            
+        }
     }
 }
