@@ -92,7 +92,7 @@ class TopScene: SKScene {
             let location = touch.locationInNode(self)
             let node = self.nodeAtPoint(location)
             
-            if node.name == "girlName"{
+            if node.name == "girlName0" || node.name == "girlName1" || node.name == "girlName2"{//正規表現で判定したいけど、かえって冗長になりそう
                 //妄想シーンに移動
                 var imagineScene:ImagineScene = ImagineScene(size:self.size)
                 
