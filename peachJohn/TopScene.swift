@@ -14,6 +14,8 @@ class TopScene: SKScene {
     var settingBtn:SKSpriteNode!
     var isSetting:Bool = false
     var isMoving:Bool = true
+    var isEnlarging:Bool = false
+    var isTouching:Bool = false
     
     override func didMoveToView(view: SKView) {
         //背景
@@ -92,15 +94,36 @@ class TopScene: SKScene {
             let scale:SKAction = SKAction.scaleTo(1.1, duration: 0.1)
             let unscale:SKAction = SKAction.scaleTo(1.0, duration: 0.1)
             let wait:SKAction = SKAction.waitForDuration(0.2)
+            let startEnlarging:SKAction = SKAction.runBlock( {
+                //クロージャ?だからselfをつけないと怒られる
+                if(self.isTouching){
+                    self.isEnlarging = true
+                    self.enlargeActions(touchedGirlName)
+                }
+                
+            })
             
-            let popAction:SKAction = SKAction.sequence([scale,unscale,wait])
+            let popAction:SKAction = SKAction.sequence([scale,unscale,wait,startEnlarging])
             
             touchedGirlName.runAction(popAction)
-            
         }
     }
     
+    func enlargeActions(touchedGirlName:SKNode){
+        let scale:SKAction = SKAction.scaleTo(2.0, duration: 2.0)
+        let fadeOut:SKAction = SKAction.fadeAlphaTo(0.5, duration: 2.0)
+        let enlarge:SKAction = SKAction.resizeToHeight(CGRectGetHeight(self.frame) / 2, duration: 2.0)
+        let whitening:SKAction = SKAction.colorizeWithColor(UIColor.whiteColor(), colorBlendFactor: 1.0, duration: 2.0)
+        
+        let enlargeGroup:SKAction = SKAction.group([scale,fadeOut,enlarge,whitening])
+        
+        touchedGirlName.runAction(enlargeGroup)
+        
+    }
+    
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        //タッチ開始
+        isTouching = true
         //タッチする指の本数は任意
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
@@ -124,6 +147,12 @@ class TopScene: SKScene {
                 
             }
         }
+        
+    }
+    
+    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+        //タッチ終了
+        isTouching = false
         
     }
     
