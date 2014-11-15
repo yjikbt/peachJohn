@@ -113,10 +113,11 @@ class TopScene: SKScene {
         let scale:SKAction = SKAction.scaleTo(2.0, duration: 2.0)
         let fadeOut:SKAction = SKAction.fadeAlphaTo(0.5, duration: 2.0)
         let enlarge:SKAction = SKAction.resizeToHeight(CGRectGetHeight(self.frame) / 2, duration: 2.0)
-        let whitening:SKAction = SKAction.colorizeWithColor(UIColor.whiteColor(), colorBlendFactor: 1.0, duration: 2.0)
+//        let whitening:SKAction = SKAction.colorizeWithColor(UIColor.whiteColor(), colorBlendFactor: 1.0, duration: 2.0)
         
-        let enlargeGroup:SKAction = SKAction.group([scale,fadeOut,enlarge,whitening])
+        let enlargeGroup:SKAction = SKAction.group([scale,fadeOut,enlarge])
         
+        touchedGirlName.removeAllActions()
         touchedGirlName.runAction(enlargeGroup)
         
     }
@@ -153,6 +154,23 @@ class TopScene: SKScene {
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
         //タッチ終了
         isTouching = false
+        
+        for touch: AnyObject in touches {
+            let location = touch.locationInNode(self)
+            let touchedNode = self.nodeAtPoint(location)
+            
+            if(isEnlarging){
+                let scale:SKAction = SKAction.scaleTo(1.0, duration: 0.1)
+                let fadeIn:SKAction = SKAction.fadeAlphaTo(1.0, duration: 0.1)
+                
+                let toSmall:SKAction = SKAction.group([scale,fadeIn])
+                
+                touchedNode.removeAllActions()
+                touchedNode.runAction(toSmall)
+                
+                isEnlarging = false
+            }
+        }
         
     }
     
