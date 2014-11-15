@@ -38,7 +38,7 @@ class TopScene: SKScene {
     func addGirlName(girlNameArray:NSArray){
         for var i = 0; i < 3; i++ {
             var cnt:CGFloat = CGFloat(3 - i)
-            let girlNameBtn = SKLabelNode(fontNamed:"DINAlternate-Bold")
+            var girlNameBtn = SKLabelNode(fontNamed:"DINAlternate-Bold")
             //ユーザデフォルトから名前を取得
             girlNameBtn.text = String(girlNameArray[i] as NSString)
             girlNameBtn.name = "girlName" + String(i)
@@ -47,6 +47,16 @@ class TopScene: SKScene {
             girlNameBtn.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame) * 0.5 * cnt)
             
             self.addChild(girlNameBtn)
+            
+            //名前の背景
+            var girlNameRect:SKSpriteNode = SKSpriteNode(color: UIColor.greenColor(), size: CGSizeMake(self.frame.size.width, girlNameBtn.fontSize * 3))
+            //文字が背景の中央になるように位置を調整
+            girlNameRect.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame) * 0.5 * cnt + girlNameBtn.fontSize / 3)
+            girlNameRect.name = "girlNameRect" + String(i)
+            
+            self.addChild(girlNameRect)
+            
+            
         }
     }
     
@@ -117,7 +127,9 @@ class TopScene: SKScene {
         
         let enlargeGroup:SKAction = SKAction.group([scale,fadeOut,enlarge])
         
+        //アクションの初期化
         touchedGirlName.removeAllActions()
+        //アクション実行
         touchedGirlName.runAction(enlargeGroup)
         
     }
@@ -130,8 +142,15 @@ class TopScene: SKScene {
             let location = touch.locationInNode(self)
             let touchedNode = self.nodeAtPoint(location)
             
-            if touchedNode.name == "girlName0" || touchedNode.name == "girlName1" || touchedNode.name == "girlName2"{//正規表現で判定したいけど、かえって冗長になりそう
-                popActions(touchedNode)
+            if touchedNode.name == "girlNameRect0" || touchedNode.name == "girlNameRect1" || touchedNode.name == "girlNameRect2"{//正規表現で判定したいけど、かえって冗長になりそう
+                //名前の背景エリアをタッチしたときの処理
+                //タッチした背景から、内包する名前のノードを取得
+                var indexStr:String!
+                indexStr = touchedNode.name?.componentsSeparatedByString("girlNameRect")[1]
+                var girlNameBtn: SKLabelNode = childNodeWithName("girlName" + indexStr) as SKLabelNode
+                //名前に対してアクション実行
+                popActions(girlNameBtn)
+                
                 //妄想シーンに移動
 //                var imagineScene:ImagineScene = ImagineScene(size:self.size)
 //                
@@ -159,16 +178,27 @@ class TopScene: SKScene {
             let location = touch.locationInNode(self)
             let touchedNode = self.nodeAtPoint(location)
             
-            if(isEnlarging){
-                let scale:SKAction = SKAction.scaleTo(1.0, duration: 0.1)
-                let fadeIn:SKAction = SKAction.fadeAlphaTo(1.0, duration: 0.1)
+            if touchedNode.name == "girlNameRect0" || touchedNode.name == "girlNameRect1" || touchedNode.name == "girlNameRect2"{
+                //名前の背景エリアをタッチしたときの処理
+                //タッチした背景から、内包する名前のノードを取得
+                var indexStr:String!
+                indexStr = touchedNode.name?.componentsSeparatedByString("girlNameRect")[1]
+                var girlNameBtn: SKLabelNode = childNodeWithName("girlName" + indexStr) as SKLabelNode
                 
-                let toSmall:SKAction = SKAction.group([scale,fadeIn])
                 
-                touchedNode.removeAllActions()
-                touchedNode.runAction(toSmall)
-                
-                isEnlarging = false
+                if(isEnlarging){
+                    let scale:SKAction = SKAction.scaleTo(1.0, duration: 0.1)
+                    let fadeIn:SKAction = SKAction.fadeAlphaTo(1.0, duration: 0.1)
+                    
+                    let toSmall:SKAction = SKAction.group([scale,fadeIn])
+                    
+                    //アクションの初期化
+                    girlNameBtn.removeAllActions()
+                    //アクション実行
+                    girlNameBtn.runAction(toSmall)
+                    
+                    isEnlarging = false
+                }
             }
         }
         
