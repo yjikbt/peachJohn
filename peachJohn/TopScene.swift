@@ -83,17 +83,51 @@ class TopScene: SKScene {
     
     func switchSetting(){
         
-        if(isSetting){
+        if(isSetting){//設定終了
             isSetting = false
             
             settingBtn.removeAllActions()
-        }else{
+            for node in self.children{
+                //名前ノードを判定
+                if node.name == "girlName0" || node.name == "girlName1" || node.name == "girlName2"{
+                    let horizontal:SKAction = SKAction.rotateToAngle(0, duration: 0.3)
+                    node.removeAllActions()
+                    //水平に戻す
+                    horizontal.timingMode = SKActionTimingMode.EaseOut
+                    //アクション実行
+                    node.runAction(horizontal)
+                }
+            }
+        }else{//設定開始
             isSetting = true
             
             //回転アニメーション
             let rotate:SKAction = SKAction.rotateByAngle(-0.2, duration: 0.1)
             let loop:SKAction = SKAction.repeatActionForever(rotate)
             settingBtn.runAction(loop)
+            
+            //回転角度
+            let angle:CGFloat = 0.05
+            //回転時間間隔
+            let rotateDuration:NSTimeInterval = 0.8
+            
+            //時計回り
+            let clockwise:SKAction = SKAction.rotateToAngle(-angle, duration: rotateDuration)
+            //反時計回り
+            let counterClockwise:SKAction = SKAction.rotateToAngle(angle, duration: rotateDuration)
+            let rotateSeq:SKAction = SKAction.sequence([clockwise,counterClockwise])
+            
+            let loop2:SKAction = SKAction.repeatActionForever(rotateSeq)
+            
+            //すべてのノードを探索
+            for node in self.children{
+                //名前ノードを判定
+                if node.name == "girlName0" || node.name == "girlName1" || node.name == "girlName2"{
+                    node.removeAllActions()
+                    //アクション実行
+                    node.runAction(loop2)
+                }
+            }
         }
     }
     
