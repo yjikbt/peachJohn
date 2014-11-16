@@ -156,6 +156,10 @@ class TopScene: SKScene {
         let fadeOut:SKAction = SKAction.fadeAlphaTo(0, duration: 0.2)
         let dimming:SKAction = SKAction.colorizeWithColor(self.backgroundColor, colorBlendFactor: 1.0, duration: 1.0)
         let transitionImagineScene:SKAction = SKAction.runBlock({
+            //ユーザデフォルト更新
+            let ud = NSUserDefaults.standardUserDefaults()
+            let nameLabelText = self.touchedGirlNameBtn as SKLabelNode
+            ud.setObject(nameLabelText.text, forKey: "touchedName")
             //妄想シーンに移動
             let fadeTransition:SKTransition = SKTransition.fadeWithColor(self.backgroundColor, duration: 1.0)
             var imagineScene:ImagineScene = ImagineScene(size:self.size)

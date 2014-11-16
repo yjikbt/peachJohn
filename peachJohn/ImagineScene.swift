@@ -14,7 +14,8 @@ class ImagineScene: SKScene {
         self.backgroundColor = SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0)
         self.scaleMode = SKSceneScaleMode.AspectFill
         
-        var girlName:String = "AYAKA"
+        let ud = NSUserDefaults.standardUserDefaults()
+        var girlName:String = ud.stringForKey("touchedName")!
         var pantyColor = SKColor(red: 0, green: 0, blue: 0, alpha: 1.0)
         
         //モデルからインスタンスを生成
