@@ -205,6 +205,8 @@ class TopScene: SKScene {
                 touchedGirlNameBg = touchedNode as SKSpriteNode
                 touchedGirlNameBtn = girlNameBtn
                 
+                //名前に対してアクション実行
+                popActions()
             }else if(touchedNode.name == "settingBtn"){
                 switchSetting()
                 
@@ -216,8 +218,6 @@ class TopScene: SKScene {
                 self.view?.presentScene(infoScene, transition: revealTransition)
             }
             
-            //名前に対してアクション実行
-            popActions()
         }
     }
     
