@@ -126,21 +126,29 @@ class TopScene: SKScene {
         let scale:SKAction = SKAction.scaleTo(2.0, duration: 2.0)
         let fadeOut:SKAction = SKAction.fadeAlphaTo(0.5, duration: 2.0)
         let enlarge:SKAction = SKAction.resizeToHeight(CGRectGetHeight(self.frame) / 2, duration: 2.0)
-//        let whitening:SKAction = SKAction.colorizeWithColor(UIColor.whiteColor(), colorBlendFactor: 1.0, duration: 2.0)
+        let whitening:SKAction = SKAction.colorizeWithColor(UIColor.whiteColor(), colorBlendFactor: 1.0, duration: 2.0)
         let nextAction:SKAction = SKAction.runBlock({
             //クロージャなのでselfをつけた
             self.finishActions()
-            
         })
         
-        let enlargeGroup:SKAction = SKAction.group([scale,fadeOut,enlarge])
-        let enlargeSequence:SKAction = SKAction.sequence([enlargeGroup,nextAction])
+        //ボタンのアクションを設定
+        let btnGroup:SKAction = SKAction.group([scale,fadeOut])
+        let btnSeq:SKAction = SKAction.sequence([btnGroup,nextAction])
         
-        //アクションの初期化
+        //ボタン背景のアクションを設定
+        let bgGroup:SKAction = SKAction.group([enlarge,whitening])
+        
+        
+        //ボタンのアクションの初期化
         touchedGirlNameBtn.removeAllActions()
-        //アクション実行
-        touchedGirlNameBtn.runAction(enlargeSequence)
+        //ボタンのアクション実行
+        touchedGirlNameBtn.runAction(btnSeq)
         
+        //ボタン背景のアクションの初期化
+        touchedGirlNameBg.removeAllActions()
+        //ボタン背景のアクション実行
+        touchedGirlNameBg.runAction(bgGroup)
     }
     
     func finishActions(){
@@ -155,15 +163,23 @@ class TopScene: SKScene {
             
             self.view?.presentScene(imagineScene, transition: fadeTransition)
         })
-//        let finishSequence:SKAction = SKAction.sequence([enlarge,dimming,transitionImagineScene])
-//        let finishGroup:SKAction = SKAction.group([burn,fadeOut])
         
-//        let finishSequence:SKAction = SKAction.sequence([burn,fadeOut])
-        let finishSequence:SKAction = SKAction.sequence([burn,fadeOut,transitionImagineScene])
-//        let finishGroup:SKAction = SKAction.group([burn,fadeOut])
+        //ボタンのアクションを設定
+        let btnGroup:SKAction = SKAction.group([burn,fadeOut])
+        
+        //ボタン背景のアクションを設定
+        let bgSeq:SKAction = SKAction.sequence([enlarge,dimming,transitionImagineScene])
+        
+        
+        //ボタンのアクションの初期化
         touchedGirlNameBtn.removeAllActions()
-        touchedGirlNameBtn.runAction(finishSequence)
-//        touchedGirlName.runAction(finishGroup)
+        //ボタンのアクション実行
+        touchedGirlNameBtn.runAction(btnGroup)
+        
+        //ボタン背景のアクションの初期化
+        touchedGirlNameBg.removeAllActions()
+        //ボタン背景のアクション実行
+        touchedGirlNameBg.runAction(bgSeq)
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
