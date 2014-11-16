@@ -17,6 +17,9 @@ class TopScene: SKScene {
     var isEnlarging:Bool = false
     var isTouching:Bool = false
     
+    var touchedGirlNameBg:SKNode!//女の子の名前の背景
+    var touchedGirlNameBtn:SKNode!//女の子の名前
+    
     override func didMoveToView(view: SKView) {
         //背景
         self.backgroundColor = SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0)
@@ -98,7 +101,7 @@ class TopScene: SKScene {
         }
     }
     
-    func popActions(touchedGirlName:SKNode){
+    func popActions(){
         if(isMoving){
             //ポップアニメーション
             let scale:SKAction = SKAction.scaleTo(1.1, duration: 0.1)
@@ -108,30 +111,59 @@ class TopScene: SKScene {
                 //クロージャ?だからselfをつけないと怒られる
                 if(self.isTouching){
                     self.isEnlarging = true
-                    self.enlargeActions(touchedGirlName)
+                    self.enlargeActions()
                 }
                 
             })
             
             let popAction:SKAction = SKAction.sequence([scale,unscale,wait,startEnlarging])
-            
-            touchedGirlName.runAction(popAction)
+            //アクション実行
+            touchedGirlNameBtn.runAction(popAction)
         }
     }
     
-    func enlargeActions(touchedGirlName:SKNode){
+    func enlargeActions(){
         let scale:SKAction = SKAction.scaleTo(2.0, duration: 2.0)
         let fadeOut:SKAction = SKAction.fadeAlphaTo(0.5, duration: 2.0)
         let enlarge:SKAction = SKAction.resizeToHeight(CGRectGetHeight(self.frame) / 2, duration: 2.0)
 //        let whitening:SKAction = SKAction.colorizeWithColor(UIColor.whiteColor(), colorBlendFactor: 1.0, duration: 2.0)
+        let nextAction:SKAction = SKAction.runBlock({
+            //クロージャなのでselfをつけた
+            self.finishActions()
+            
+        })
         
         let enlargeGroup:SKAction = SKAction.group([scale,fadeOut,enlarge])
+        let enlargeSequence:SKAction = SKAction.sequence([enlargeGroup,nextAction])
         
         //アクションの初期化
-        touchedGirlName.removeAllActions()
+        touchedGirlNameBtn.removeAllActions()
         //アクション実行
-        touchedGirlName.runAction(enlargeGroup)
+        touchedGirlNameBtn.runAction(enlargeSequence)
         
+    }
+    
+    func finishActions(){
+        let enlarge:SKAction = SKAction.resizeToHeight(CGRectGetHeight(self.frame) * 2, duration: 0.5)
+        let burn:SKAction = SKAction.scaleTo(10.0, duration: 0.5)
+        let fadeOut:SKAction = SKAction.fadeAlphaTo(0, duration: 0.2)
+        let dimming:SKAction = SKAction.colorizeWithColor(self.backgroundColor, colorBlendFactor: 1.0, duration: 1.0)
+        let transitionImagineScene:SKAction = SKAction.runBlock({
+            //妄想シーンに移動
+            let fadeTransition:SKTransition = SKTransition.fadeWithColor(self.backgroundColor, duration: 1.0)
+            var imagineScene:ImagineScene = ImagineScene(size:self.size)
+            
+            self.view?.presentScene(imagineScene, transition: fadeTransition)
+        })
+//        let finishSequence:SKAction = SKAction.sequence([enlarge,dimming,transitionImagineScene])
+//        let finishGroup:SKAction = SKAction.group([burn,fadeOut])
+        
+//        let finishSequence:SKAction = SKAction.sequence([burn,fadeOut])
+        let finishSequence:SKAction = SKAction.sequence([burn,fadeOut,transitionImagineScene])
+//        let finishGroup:SKAction = SKAction.group([burn,fadeOut])
+        touchedGirlNameBtn.removeAllActions()
+        touchedGirlNameBtn.runAction(finishSequence)
+//        touchedGirlName.runAction(finishGroup)
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
@@ -144,17 +176,16 @@ class TopScene: SKScene {
             
             if touchedNode.name == "girlNameRect0" || touchedNode.name == "girlNameRect1" || touchedNode.name == "girlNameRect2"{//正規表現で判定したいけど、かえって冗長になりそう
                 //名前の背景エリアをタッチしたときの処理
+                
                 //タッチした背景から、内包する名前のノードを取得
                 var indexStr:String!
                 indexStr = touchedNode.name?.componentsSeparatedByString("girlNameRect")[1]
                 var girlNameBtn: SKLabelNode = childNodeWithName("girlName" + indexStr) as SKLabelNode
-                //名前に対してアクション実行
-                popActions(girlNameBtn)
                 
-                //妄想シーンに移動
-//                var imagineScene:ImagineScene = ImagineScene(size:self.size)
-//                
-//                self.view?.presentScene(imagineScene)
+                //ボタンの背景
+                touchedGirlNameBg = touchedNode
+                touchedGirlNameBtn = girlNameBtn
+                
             }else if(touchedNode.name == "settingBtn"){
                 switchSetting()
                 
@@ -166,6 +197,9 @@ class TopScene: SKScene {
                 self.view?.presentScene(infoScene, transition: revealTransition)
                 
             }
+            
+            //名前に対してアクション実行
+            popActions()
         }
         
     }
