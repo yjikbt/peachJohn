@@ -146,16 +146,8 @@ class TopScene: SKScene {
         //ボタン背景のアクションを設定
         let bgGroup:SKAction = SKAction.group([enlarge,whitening])
         
-        
-        //ボタンのアクションの初期化
-        touchedGirlNameBtn.removeAllActions()
-        //ボタンのアクション実行
-        touchedGirlNameBtn.runAction(btnSeq)
-        
-        //ボタン背景のアクションの初期化
-        touchedGirlNameBg.removeAllActions()
-        //ボタン背景のアクション実行
-        touchedGirlNameBg.runAction(bgGroup)
+        //アクション実行
+        doGirlNameAction(btnSeq, bgAction: bgGroup)
         
         //すべてのノードを探索
         for node in self.children{
@@ -186,18 +178,22 @@ class TopScene: SKScene {
         //ボタン背景のアクションを設定
         let bgSeq:SKAction = SKAction.sequence([enlarge,dimming,transitionImagineScene])
         
-        
+        //アクション実行
+        doGirlNameAction(btnGroup, bgAction: bgSeq)
+    }
+    
+    func doGirlNameAction(btnAction:SKAction,bgAction:SKAction){
         //ボタンのアクションの初期化
         touchedGirlNameBtn.removeAllActions()
         //ボタンのアクション実行
-        touchedGirlNameBtn.runAction(btnGroup)
+        touchedGirlNameBtn.runAction(btnAction)
         
         //ボタン背景のアクションの初期化
         touchedGirlNameBg.removeAllActions()
         //ボタン背景のアクション実行
-        touchedGirlNameBg.runAction(bgSeq)
+        touchedGirlNameBg.runAction(bgAction)
+        
     }
-    
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         //タッチ開始
         isTouching = true
@@ -250,21 +246,11 @@ class TopScene: SKScene {
                 let reduce:SKAction = SKAction.resizeToHeight(140, duration: 0.1)
                 let dimming:SKAction = SKAction.colorizeWithColor(self.backgroundColor, colorBlendFactor: 1.0, duration: 0.1)
                 
-                //ボタンのアクションを設定
-//                let btnGroup:SKAction = SKAction.group([scale,fadeIn])
-                
                 //ボタン背景のアクションを設定
                 let bgGroup:SKAction = SKAction.group([reduce,dimming])
                 
-                //ボタンのアクションの初期化
-                touchedGirlNameBtn.removeAllActions()
-                //ボタンのアクション実行
-                touchedGirlNameBtn.runAction(scale)
-                
-                //ボタン背景のアクションの初期化
-                touchedGirlNameBg.removeAllActions()
-                //ボタン背景のアクション実行
-                touchedGirlNameBg.runAction(bgGroup)
+                //アクション実行
+                doGirlNameAction(scale, bgAction: bgGroup)
                 
                 //すべてのノードを探索
                 for node in self.children{
@@ -273,7 +259,6 @@ class TopScene: SKScene {
                 }
             }
         }
-        
     }
     
     override func update(currentTime: NSTimeInterval) {
