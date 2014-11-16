@@ -130,13 +130,10 @@ class GameScene: SKScene {
             
             //スタートボタンをタッチ
             if node.name == "startBtn"{
-                NSLog("ok")
-                
-                let push:SKTransition = SKTransition.revealWithDirection(SKTransitionDirection.Left, duration: 0.5)
+                //トップページに遷移
+                let fadeTransition:SKTransition = SKTransition.fadeWithColor(self.backgroundColor, duration: 6.0)
                 var topScene:TopScene = TopScene(size:self.size)
-                topScene.scaleMode = SKSceneScaleMode.AspectFill
-                
-                self.view?.presentScene(topScene,transition: push)
+                self.view?.presentScene(topScene, transition: fadeTransition)
             }
         }
     }
