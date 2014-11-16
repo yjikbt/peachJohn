@@ -36,7 +36,6 @@ class TopScene: SKScene {
         addInfoBtn()
         //名前をセット
         addGirlName(girlNameArray!)
-        
     }
     
     func addGirlName(girlNameArray:NSArray){
@@ -49,8 +48,6 @@ class TopScene: SKScene {
             girlNameBtn.fontSize = 50
             girlNameBtn.fontColor = SKColor(red: 0.28, green: 0.28, blue: 0.28, alpha: 1.0)
             girlNameBtn.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame) * 0.5 * cnt)
-//            girlNameBtn.zPosition = 1.0
-            
             
             self.addChild(girlNameBtn)
             
@@ -59,11 +56,8 @@ class TopScene: SKScene {
             //文字が背景の中央になるように位置を調整
             girlNameRect.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame) * 0.5 * cnt + girlNameBtn.fontSize / 3)
             girlNameRect.name = "girlNameRect" + String(i)
-//            girlNameRect.zPosition = 0.0
             
             self.addChild(girlNameRect)
-            
-            
         }
     }
     
@@ -93,8 +87,6 @@ class TopScene: SKScene {
             isSetting = false
             
             settingBtn.removeAllActions()
-            
-            
         }else{
             isSetting = true
             
@@ -117,7 +109,6 @@ class TopScene: SKScene {
                     self.isEnlarging = true
                     self.enlargeActions()
                 }
-                
             })
             
             let popAction:SKAction = SKAction.sequence([scale,unscale,wait,startEnlarging])
@@ -223,13 +214,11 @@ class TopScene: SKScene {
                 var infoScene:InfoScene = InfoScene(size:self.size)
                 
                 self.view?.presentScene(infoScene, transition: revealTransition)
-                
             }
             
             //名前に対してアクション実行
             popActions()
         }
-        
     }
     
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
