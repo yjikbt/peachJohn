@@ -21,7 +21,7 @@ class ImagineScene: SKScene {
         var panty:pantyColorModel = pantyColorModel()
         
         addGirlName(girlName)
-        addBackground(panty.colorArray[0])
+        addBackground(panty.getBgColor())
     }
    
     func addGirlName(name:String){
