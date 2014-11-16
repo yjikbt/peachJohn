@@ -36,6 +36,7 @@ class TopScene: SKScene {
         addInfoBtn()
         //名前をセット
         addGirlName(girlNameArray!)
+        
     }
     
     func addGirlName(girlNameArray:NSArray){
@@ -131,9 +132,12 @@ class TopScene: SKScene {
         let enlarge:SKAction = SKAction.resizeToHeight(CGRectGetHeight(self.frame) / 2, duration: 2.0)
         let whitening:SKAction = SKAction.colorizeWithColor(UIColor.whiteColor(), colorBlendFactor: 1.0, duration: 2.0)
         let nextAction:SKAction = SKAction.runBlock({
+            //タッチを止めても、もとには戻れない
+            self.isEnlarging = false
             //クロージャなのでselfをつけた
             self.finishActions()
         })
+        let disappear:SKAction = SKAction.fadeAlphaTo(0, duration: 0.8)
         
         //ボタンのアクションを設定
         let btnGroup:SKAction = SKAction.group([scale,fadeOut])
@@ -153,8 +157,14 @@ class TopScene: SKScene {
         //ボタン背景のアクション実行
         touchedGirlNameBg.runAction(bgGroup)
         
-//        touchedGirlNameBtn.zPosition = 2.0
-//        touchedGirlNameBg.zPosition = 1.0
+        //すべてのノードを探索
+        for node in self.children{
+            //タッチしたボタン,その背景以外
+            if node as? SKNode != touchedGirlNameBtn && node as? SKNode != touchedGirlNameBg {
+                //フェードアウトして消滅
+                node.runAction(disappear)
+            }
+        }
     }
     
     func finishActions(){
@@ -236,36 +246,31 @@ class TopScene: SKScene {
             
             if(isEnlarging){
                 let scale:SKAction = SKAction.scaleTo(1.0, duration: 0.1)
-                let fadeIn:SKAction = SKAction.fadeAlphaTo(1.0, duration: 0.1)
+                let fadeIn:SKAction = SKAction.fadeAlphaTo(1.0, duration: 1.0)
                 let reduce:SKAction = SKAction.resizeToHeight(140, duration: 0.1)
                 let dimming:SKAction = SKAction.colorizeWithColor(self.backgroundColor, colorBlendFactor: 1.0, duration: 0.1)
-                let changeZpos:SKAction = SKAction.runBlock({
-                    var reduceNode:SKSpriteNode = self.touchedGirlNameBg
-                    //                        reduceNode.zPosition = 0.0
-                    //                        self.touchedGirlNameBtn.zPosition = 1.0
-                    //                        self.touchedGirlNameBg.zPosition = 0.0
-                    self.isEnlarging = false
-                })
                 
                 //ボタンのアクションを設定
-                let btnGroup:SKAction = SKAction.group([scale,fadeIn])
+//                let btnGroup:SKAction = SKAction.group([scale,fadeIn])
                 
                 //ボタン背景のアクションを設定
-                let bgSeq:SKAction = SKAction.sequence([reduce,changeZpos])
-                let bgGroup:SKAction = SKAction.group([bgSeq,dimming])
-                
+                let bgGroup:SKAction = SKAction.group([reduce,dimming])
                 
                 //ボタンのアクションの初期化
                 touchedGirlNameBtn.removeAllActions()
                 //ボタンのアクション実行
-                touchedGirlNameBtn.runAction(btnGroup)
+                touchedGirlNameBtn.runAction(scale)
                 
                 //ボタン背景のアクションの初期化
                 touchedGirlNameBg.removeAllActions()
                 //ボタン背景のアクション実行
                 touchedGirlNameBg.runAction(bgGroup)
                 
-                //                    isEnlarging = false
+                //すべてのノードを探索
+                for node in self.children{
+                    //フェードアウトして消滅
+                    node.runAction(fadeIn)
+                }
             }
         }
         
