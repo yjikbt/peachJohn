@@ -26,7 +26,7 @@ class ImagineScene: SKScene {
    
     func addGirlName(name:String){
         //女の子の名前をセット
-        let girlLabelName = SKLabelNode(fontNamed:"HelveticaNeue")
+        let girlLabelName = SKLabelNode(fontNamed:"DINAlternate-Bold")
         girlLabelName.text = name
         girlLabelName.fontSize = 50
         girlLabelName.fontColor = SKColor(red: 0.28, green: 0.28, blue: 0.28, alpha: 1.0)
