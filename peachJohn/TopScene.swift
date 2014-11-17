@@ -263,8 +263,8 @@ class TopScene: SKScene {
                         
                         if textFields != nil{
                             for textField:UITextField in textFields!{
-                                //入力されたテキスト
-                                println(textField.text)
+                                //女の子の名前を更新
+                                girlNameBtn.text = textField.text
                             }
                         }
                         
