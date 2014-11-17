@@ -246,7 +246,13 @@ class TopScene: SKScene {
                 //名前に対してアクション実行
                 popActions()
             }else if(touchedNode.name == "girlNameRect0" || touchedNode.name == "girlNameRect1" || touchedNode.name == "girlNameRect2") && (isSetting == true){
-                var alertController:UIAlertController = UIAlertController(title: "FIG", message: "女の子の名前を入力して下さい", preferredStyle: UIAlertControllerStyle.Alert)
+                //タッチした背景から、内包する名前のノードを取得
+                var indexStr:String!
+                indexStr = touchedNode.name?.componentsSeparatedByString("girlNameRect")[1]
+                var girlNameBtn: SKLabelNode = childNodeWithName("girlName" + indexStr) as SKLabelNode
+                
+                //alertコントローラ
+                var alertController:UIAlertController = UIAlertController(title: girlNameBtn.text + "を編集中", message: "新しい女の子の名前を入力して下さい", preferredStyle: UIAlertControllerStyle.Alert)
                 
                 let okAction = UIAlertAction(title: "OK", style: .Default,handler:{
                     (aciton:UIAlertAction!) -> Void in
