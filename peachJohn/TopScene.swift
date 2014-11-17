@@ -265,6 +265,9 @@ class TopScene: SKScene {
                             for textField:UITextField in textFields!{
                                 //女の子の名前を更新
                                 girlNameBtn.text = textField.text
+                                
+                                //設定終了
+                                self.switchSetting()
                             }
                         }
                         
