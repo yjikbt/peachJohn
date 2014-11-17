@@ -254,27 +254,41 @@ class TopScene: SKScene {
                 //alertコントローラ
                 var alertController:UIAlertController = UIAlertController(title: girlNameBtn.text + "を編集中", message: "新しい女の子の名前を入力して下さい", preferredStyle: UIAlertControllerStyle.Alert)
                 
-                let okAction = UIAlertAction(title: "OK", style: .Default,handler:{
-                    (aciton:UIAlertAction!) -> Void in
-                    //ok押したときの処理
-                    
-                    })
+                let okAction = UIAlertAction(title: "OK",
+                    style: .Default,
+                    handler:{
+                        (aciton:UIAlertAction!) -> Void in
+                        //ok押したときの処理
+                        let textFields:[UITextField]? = alertController.textFields as [UITextField]?
+                        
+                        if textFields != nil{
+                            for textField:UITextField in textFields!{
+                                //入力されたテキスト
+                                println(textField.text)
+                            }
+                        }
+                        
+                })
                 
-                let cancelAction = UIAlertAction(title: "cancel", style: .Default,handler:{
-                    (aciton:UIAlertAction!) -> Void in
-                    //cancel押したときの処理
-                    
-                    })
+                let cancelAction = UIAlertAction(title: "cancel",
+                    style: .Default,
+                    handler:{
+                        (aciton:UIAlertAction!) -> Void in
+                        //cancel押したときの処理
+                        
+                })
                 
                 //根元にあるview
                 let currentViewController : UIViewController? = UIApplication.sharedApplication().keyWindow?.rootViewController!
                 
                 
-                alertController.addAction(okAction)
                 alertController.addAction(cancelAction)
+                alertController.addAction(okAction)
                 
                 //text field追加
                 alertController.addTextFieldWithConfigurationHandler({(text:UITextField!) -> Void in
+//                    text.keyboardType = UIKeyboardType.Default
+                    text.placeholder = "ここに名前を入力"
                 })
                 
                 
