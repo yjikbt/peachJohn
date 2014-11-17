@@ -231,7 +231,7 @@ class TopScene: SKScene {
             let location = touch.locationInNode(self)
             let touchedNode = self.nodeAtPoint(location)
             
-            if touchedNode.name == "girlNameRect0" || touchedNode.name == "girlNameRect1" || touchedNode.name == "girlNameRect2"{//正規表現で判定したいけど、かえって冗長になりそう
+            if (touchedNode.name == "girlNameRect0" || touchedNode.name == "girlNameRect1" || touchedNode.name == "girlNameRect2") && (isSetting == false){//正規表現で判定したいけど、かえって冗長になりそう
                 //名前の背景エリアをタッチしたときの処理
                 
                 //タッチした背景から、内包する名前のノードを取得
@@ -245,6 +245,36 @@ class TopScene: SKScene {
                 
                 //名前に対してアクション実行
                 popActions()
+            }else if(touchedNode.name == "girlNameRect0" || touchedNode.name == "girlNameRect1" || touchedNode.name == "girlNameRect2") && (isSetting == true){
+                var alertController:UIAlertController = UIAlertController(title: "FIG", message: "女の子の名前を入力して下さい", preferredStyle: UIAlertControllerStyle.Alert)
+                
+                let okAction = UIAlertAction(title: "OK", style: .Default,handler:{
+                    (aciton:UIAlertAction!) -> Void in
+                    //ok押したときの処理
+                    
+                    })
+                
+                let cancelAction = UIAlertAction(title: "cancel", style: .Default,handler:{
+                    (aciton:UIAlertAction!) -> Void in
+                    //cancel押したときの処理
+                    
+                    })
+                
+                //根元にあるview
+                let currentViewController : UIViewController? = UIApplication.sharedApplication().keyWindow?.rootViewController!
+                
+                
+                alertController.addAction(okAction)
+                alertController.addAction(cancelAction)
+                
+                //text field追加
+                alertController.addTextFieldWithConfigurationHandler({(text:UITextField!) -> Void in
+                })
+                
+                
+                //alertを表示
+                currentViewController?.presentViewController(alertController, animated: true, completion: nil)
+                
             }else if(touchedNode.name == "settingBtn"){
                 switchSetting()
                 
