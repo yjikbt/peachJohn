@@ -29,6 +29,8 @@ class TopScene: SKScene {
         let ud = NSUserDefaults.standardUserDefaults()
         var girlNameArray = ud.arrayForKey("girlNameArray")
         
+        
+        println("aa")
         //設定ボタンをセット
         addSettingBtn()
         
@@ -264,6 +266,26 @@ class TopScene: SKScene {
                         if textFields != nil{
                             for textField:UITextField in textFields!{
                                 //女の子の名前を更新
+                                //ユーザデフォルトを更新
+                                let ud = NSUserDefaults.standardUserDefaults()
+                                var array:[String] = ud.objectForKey("girlNameArray") as [String]!
+                                
+                                switch indexStr {
+                                    case "0":
+                                        array[0] = textField.text
+                                    case "1":
+                                        array[1] = textField.text
+                                    case "2":
+                                        array[2] = textField.text
+                                    default:
+                                        break
+                                }
+                                
+                                //更新
+                                ud.setObject(array, forKey: "girlNameArray")
+                                ud.synchronize()
+                                
+                                //表示中の名前を更新
                                 girlNameBtn.text = textField.text
                                 
                                 //設定終了

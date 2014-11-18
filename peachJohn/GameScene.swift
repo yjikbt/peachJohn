@@ -17,7 +17,9 @@ class GameScene: SKScene {
         let ud = NSUserDefaults.standardUserDefaults()
         var initGirlName:[String] = ["AYA","YURI","TOMOKA"]
         ud.setObject(initGirlName, forKey: "girlNameArray")
+        ud.synchronize()
         ud.setObject("", forKey:"touchedName")
+        ud.synchronize()
         //背景
         self.backgroundColor = SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0)
         self.scaleMode = SKSceneScaleMode.AspectFill
