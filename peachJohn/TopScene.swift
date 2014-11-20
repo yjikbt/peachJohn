@@ -88,6 +88,10 @@ class TopScene: SKScene {
         if(isSetting){//設定終了
             isSetting = false
             
+            //効果音
+//            let settingEndSound:SKAction = SKAction.playSoundFileNamed("TrackingOff.aiff", waitForCompletion: false)
+//            settingBtn.runAction(settingEndSound)
+            
             settingBtn.removeAllActions()
             for node in self.children{
                 //名前ノードを判定
@@ -107,6 +111,10 @@ class TopScene: SKScene {
             let rotate:SKAction = SKAction.rotateByAngle(-0.2, duration: 0.1)
             let loop:SKAction = SKAction.repeatActionForever(rotate)
             settingBtn.runAction(loop)
+            
+            //効果音
+            let settingStartSound:SKAction = SKAction.playSoundFileNamed("TrackingOn.aiff", waitForCompletion: false)
+            settingBtn.runAction(settingStartSound)
             
             //回転角度
             let angle:CGFloat = 0.05
@@ -150,6 +158,9 @@ class TopScene: SKScene {
             let popAction:SKAction = SKAction.sequence([scale,unscale,wait,startEnlarging])
             //アクション実行
             touchedGirlNameBtn.runAction(popAction)
+            
+            let popSoundAction:SKAction = SKAction.playSoundFileNamed("Pop.aiff", waitForCompletion: false)
+            touchedGirlNameBg.runAction(popSoundAction)
         }
     }
     
