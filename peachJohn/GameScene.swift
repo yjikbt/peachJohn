@@ -26,19 +26,38 @@ class GameScene: SKScene {
         //待ち時間
         let titleTime:NSTimeInterval = 1.0
         let iconTime:NSTimeInterval = 2.0
-        self.addTitle(titleTime)
-        self.addIcon(titleTime,animationDuration:iconTime)
-        self.addMessage(titleTime,animationDuration:iconTime)
+//        self.addTitle(titleTime)
+//        self.addIcon(titleTime,animationDuration:iconTime)
+//        self.addMessage(titleTime,animationDuration:iconTime)
+        self.addRectangle()
         self.addStartBtn(titleTime,animationDuration:iconTime)
+        
         
         //全体を消す
         //時間は適当
-        let wait:SKAction = SKAction.waitForDuration(15)
-        let fadeAlphaToZero:SKAction = SKAction.fadeAlphaTo(0, duration: 2)
-        let fadeOut:SKAction = SKAction.sequence([wait,fadeAlphaToZero])
-        self.runAction(fadeOut)
+//        let wait:SKAction = SKAction.waitForDuration(15)
+//        let fadeAlphaToZero:SKAction = SKAction.fadeAlphaTo(0, duration: 2)
+//        let fadeOut:SKAction = SKAction.sequence([wait,fadeAlphaToZero])
+//        self.runAction(fadeOut)
     }
     
+    func addRectangle(){
+        // 四角を作成
+        var rectangle = SKSpriteNode(
+            color: UIColor.hexStr("fc7050", alpha: 1.0),
+            size: CGSizeMake(80, self.frame.size.height)
+        )
+        
+        // 四角の位置を指定。x、y それぞれフレームの真ん中を指定しています。
+        let rx = Double(CGRectGetMidX(self.frame)) - 180
+        let ry = Double(CGRectGetMidY(self.frame))
+        rectangle.position = CGPoint(
+            x:rx,
+            y:ry
+        )
+        
+        self.addChild(rectangle)
+    }
     
     func addTitle(animationDuration:NSTimeInterval){
         //タイトル
@@ -108,7 +127,7 @@ class GameScene: SKScene {
     
     func addStartBtn(waitTime:NSTimeInterval,animationDuration:NSTimeInterval){
         let startBtn = SKLabelNode(fontNamed:"HelveticaNeue")
-        startBtn.text = "start"
+        startBtn.text = "はじめる"
         startBtn.name = "startBtn"
         startBtn.fontSize = 50
         startBtn.fontColor = SKColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0)
@@ -134,7 +153,8 @@ class GameScene: SKScene {
             //スタートボタンをタッチ
             if node.name == "startBtn"{
                 //トップページに遷移
-                let fadeTransition:SKTransition = SKTransition.fadeWithColor(self.backgroundColor, duration: 0.6)
+//                let fadeTransition:SKTransition = SKTransition.fadeWithColor(self.backgroundColor, duration: 0.6)
+                let fadeTransition:SKTransition = SKTransition.moveInWithDirection(SKTransitionDirection.Left, duration: 1.0)
                 var topScene:TopScene = TopScene(size:self.size)
                 self.view?.presentScene(topScene, transition: fadeTransition)
             }

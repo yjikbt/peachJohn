@@ -22,15 +22,13 @@ class TopScene: SKScene {
     
     override func didMoveToView(view: SKView) {
         //背景
-        self.backgroundColor = SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0)
+        self.backgroundColor = UIColor.hexStr("fc7050", alpha: 1.0)
         self.scaleMode = SKSceneScaleMode.AspectFill
         
         //ユーザデフォルト
         let ud = NSUserDefaults.standardUserDefaults()
         var girlNameArray = ud.arrayForKey("girlNameArray")
         
-        
-        println("aa")
         //設定ボタンをセット
         addSettingBtn()
         
