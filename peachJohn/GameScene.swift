@@ -10,6 +10,7 @@
 import SpriteKit
 
 class GameScene: SKScene {
+    var rectangle:SKSpriteNode!
     //time
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -43,7 +44,7 @@ class GameScene: SKScene {
     
     func addRectangle(){
         // 四角を作成
-        var rectangle = SKSpriteNode(
+        rectangle = SKSpriteNode(
             color: UIColor.hexStr("fc7050", alpha: 1.0),
             size: CGSizeMake(80, self.frame.size.height)
         )
@@ -55,6 +56,8 @@ class GameScene: SKScene {
             x:rx,
             y:ry
         )
+        
+        rectangle.name = "rectangle"
         
         self.addChild(rectangle)
     }
@@ -157,6 +160,15 @@ class GameScene: SKScene {
                 let fadeTransition:SKTransition = SKTransition.moveInWithDirection(SKTransitionDirection.Left, duration: 1.0)
                 var topScene:TopScene = TopScene(size:self.size)
                 self.view?.presentScene(topScene, transition: fadeTransition)
+                
+                //帯の移動
+//                let rx = Double(CGRectGetMidX(self.frame)) * 2.0
+//                let ry = Double(CGRectGetMidY(self.frame))
+//                let topPos:CGPoint = CGPoint(x:rx, y:ry)
+//                let moveToTop:SKAction = SKAction.moveTo(topPos,duration:1.0)
+//                
+//                //アニメーション実行
+//                rectangle.runAction(moveToTop)
             }
         }
     }
