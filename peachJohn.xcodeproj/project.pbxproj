@@ -56,6 +56,8 @@
 		9A6EB09C1A1D698F00527ACB /* Pop.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Pop.aiff; sourceTree = "<group>"; };
 		9A6EB09E1A1D6C7400527ACB /* TrackingOff.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = TrackingOff.aiff; sourceTree = "<group>"; };
 		9A6EB09F1A1D6C7400527ACB /* TrackingOn.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = TrackingOn.aiff; sourceTree = "<group>"; };
+		9A985FBC1A2E850500B3A2D5 /* Franklin Gothic Medium Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Franklin Gothic Medium Italic.ttf"; sourceTree = "<group>"; };
+		9A985FBD1A2E850500B3A2D5 /* Franklin Gothic Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Franklin Gothic Medium.ttf"; sourceTree = "<group>"; };
 		9AE9434E1A0F9AF4004AC409 /* purple_cat.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = purple_cat.jpeg; sourceTree = "<group>"; };
 		9AE9434F1A0F9AF4004AC409 /* mono_cat.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mono_cat.jpeg; sourceTree = "<group>"; };
 		9AE943501A0F9AF4004AC409 /* cat114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cat114.png; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 		1151CA6619E4235300750B7C /* peachJohn */ = {
 			isa = PBXGroup;
 			children = (
+				9A985FBB1A2E844700B3A2D5 /* font */,
 				9A6EB09B1A1D694E00527ACB /* sound */,
 				9AE9434E1A0F9AF4004AC409 /* purple_cat.jpeg */,
 				9AE9434F1A0F9AF4004AC409 /* mono_cat.jpeg */,
@@ -154,6 +157,15 @@
 				9A6EB09C1A1D698F00527ACB /* Pop.aiff */,
 			);
 			name = sound;
+			sourceTree = "<group>";
+		};
+		9A985FBB1A2E844700B3A2D5 /* font */ = {
+			isa = PBXGroup;
+			children = (
+				9A985FBC1A2E850500B3A2D5 /* Franklin Gothic Medium Italic.ttf */,
+				9A985FBD1A2E850500B3A2D5 /* Franklin Gothic Medium.ttf */,
+			);
+			name = font;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

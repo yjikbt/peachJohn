@@ -11,6 +11,8 @@ import SpriteKit
 
 class GameScene: SKScene {
     var rectangle:SKSpriteNode!
+    var orange:String = "fc7050"
+    var blue:String = "39c3be"
     //time
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -30,6 +32,7 @@ class GameScene: SKScene {
 //        self.addTitle(titleTime)
 //        self.addIcon(titleTime,animationDuration:iconTime)
 //        self.addMessage(titleTime,animationDuration:iconTime)
+        self.addTitle()
         self.addRectangle()
         self.addStartBtn(titleTime,animationDuration:iconTime)
         
@@ -49,7 +52,6 @@ class GameScene: SKScene {
             size: CGSizeMake(80, self.frame.size.height)
         )
         
-        // 四角の位置を指定。x、y それぞれフレームの真ん中を指定しています。
         let rx = Double(CGRectGetMidX(self.frame)) - 180
         let ry = Double(CGRectGetMidY(self.frame))
         rectangle.position = CGPoint(
@@ -132,9 +134,9 @@ class GameScene: SKScene {
         let startBtn = SKLabelNode(fontNamed:"HelveticaNeue")
         startBtn.text = "はじめる"
         startBtn.name = "startBtn"
-        startBtn.fontSize = 50
-        startBtn.fontColor = SKColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0)
-        startBtn.position = CGPoint(x:CGRectGetMidX(self.frame), y:startBtn.frame.size.height * 2)
+        startBtn.fontSize = 40
+        startBtn.fontColor = UIColor.hexStr(blue, alpha: 1.0)
+        startBtn.position = CGPoint(x:CGRectGetMidX(self.frame), y:startBtn.frame.size.height * 4)
         
         self.addChild(startBtn)
         
@@ -143,7 +145,22 @@ class GameScene: SKScene {
         let fadeToAlpha1:SKAction = SKAction.fadeAlphaTo(1.0, duration: animationDuration)
         let fadeIn:SKAction = SKAction.sequence([zeroAlpha,wait,fadeToAlpha1])
         
-        startBtn.runAction(fadeIn)
+//        startBtn.runAction(fadeIn)
+    }
+    
+    func addTitle(){
+        let title = SKLabelNode(fontNamed:"Franklin Gothic Medium")
+        let px = Double(CGRectGetMidX(self.frame)) * 0.9
+        let py = Double(CGRectGetMidY(self.frame)) * 1.5
+        
+        title.text = "FIG"
+        title.name = "title"
+        title.fontSize = 90
+        title.fontColor = UIColor.hexStr(blue, alpha: 1.0)
+        
+        title.position = CGPoint(x:px,y:py)
+        
+        self.addChild(title)
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
