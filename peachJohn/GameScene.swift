@@ -15,7 +15,6 @@ class GameScene: SKScene {
     var blue:String = "39c3be"
     //time
     override func didMoveToView(view: SKView) {
-        /* Setup your scene here */
         //ユーザデフォルト
         let ud = NSUserDefaults.standardUserDefaults()
         var initGirlName:[String] = ["AYA","YURI","TOMOKA"]
@@ -29,20 +28,9 @@ class GameScene: SKScene {
         //待ち時間
         let titleTime:NSTimeInterval = 1.0
         let iconTime:NSTimeInterval = 2.0
-//        self.addTitle(titleTime)
-//        self.addIcon(titleTime,animationDuration:iconTime)
-//        self.addMessage(titleTime,animationDuration:iconTime)
         self.addTitle()
         self.addRectangle()
         self.addStartBtn(titleTime,animationDuration:iconTime)
-        
-        
-        //全体を消す
-        //時間は適当
-//        let wait:SKAction = SKAction.waitForDuration(15)
-//        let fadeAlphaToZero:SKAction = SKAction.fadeAlphaTo(0, duration: 2)
-//        let fadeOut:SKAction = SKAction.sequence([wait,fadeAlphaToZero])
-//        self.runAction(fadeOut)
     }
     
     func addRectangle(){
@@ -144,8 +132,6 @@ class GameScene: SKScene {
         let zeroAlpha:SKAction = SKAction.fadeAlphaTo(0, duration: 0)
         let fadeToAlpha1:SKAction = SKAction.fadeAlphaTo(1.0, duration: animationDuration)
         let fadeIn:SKAction = SKAction.sequence([zeroAlpha,wait,fadeToAlpha1])
-        
-//        startBtn.runAction(fadeIn)
     }
     
     func addTitle(){
@@ -164,7 +150,6 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        /* Called when a touch begins */
         
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
@@ -173,24 +158,13 @@ class GameScene: SKScene {
             //スタートボタンをタッチ
             if node.name == "startBtn"{
                 //トップページに遷移
-//                let fadeTransition:SKTransition = SKTransition.fadeWithColor(self.backgroundColor, duration: 0.6)
                 let fadeTransition:SKTransition = SKTransition.moveInWithDirection(SKTransitionDirection.Left, duration: 1.0)
                 var topScene:TopScene = TopScene(size:self.size)
                 self.view?.presentScene(topScene, transition: fadeTransition)
-                
-                //帯の移動
-//                let rx = Double(CGRectGetMidX(self.frame)) * 2.0
-//                let ry = Double(CGRectGetMidY(self.frame))
-//                let topPos:CGPoint = CGPoint(x:rx, y:ry)
-//                let moveToTop:SKAction = SKAction.moveTo(topPos,duration:1.0)
-//                
-//                //アニメーション実行
-//                rectangle.runAction(moveToTop)
             }
         }
     }
    
     override func update(currentTime: CFTimeInterval) {
-        /* Called before each frame is rendered */
     }
 }
