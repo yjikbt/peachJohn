@@ -21,10 +21,7 @@ class InfoScene: SKScene {
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         let moveInTransition:SKTransition = SKTransition.moveInWithDirection(SKTransitionDirection.Up, duration: 0.5)
         let topScene:TopScene = TopScene(size:self.size)
-        
-        //SKTransitionにtimingModeはない
-//        moveInTransition.timingMode = SKActionTimingMode.EaseInEaseOut
-        
+                
         self.view?.presentScene(topScene, transition: moveInTransition)
         
     }

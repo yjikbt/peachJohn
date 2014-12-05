@@ -46,12 +46,6 @@ class pantyColorModel: NSObject {
     func getColorIndexNum() -> Int{
         var num:Int = Int(arc4random() % 24)
         
-        if(num > 10){
-//            isDarkColor = true
-        }else{
-//            isDarkColor = false
-        }
-        
         return num
     }
 }

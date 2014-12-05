@@ -87,8 +87,6 @@ class TopScene: SKScene {
             isSetting = false
             
             //効果音
-//            let settingEndSound:SKAction = SKAction.playSoundFileNamed("TrackingOff.aiff", waitForCompletion: false)
-//            settingBtn.runAction(settingEndSound)
             
             settingBtn.removeAllActions()
             for node in self.children{
@@ -321,7 +319,6 @@ class TopScene: SKScene {
                 
                 //text field追加
                 alertController.addTextFieldWithConfigurationHandler({(text:UITextField!) -> Void in
-//                    text.keyboardType = UIKeyboardType.Default
                     text.placeholder = "ここに名前を入力"
                 })
                 
