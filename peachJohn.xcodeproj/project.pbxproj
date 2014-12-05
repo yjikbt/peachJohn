@@ -15,6 +15,16 @@
 		1151CA7519E4235300750B7C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1151CA7419E4235300750B7C /* Images.xcassets */; };
 		1151CA7819E4235300750B7C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1151CA7619E4235300750B7C /* LaunchScreen.xib */; };
 		1151CA8419E4235300750B7C /* peachJohnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1151CA8319E4235300750B7C /* peachJohnTests.swift */; };
+		9A5B6DC41A1574E600C890CE /* InfoScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5B6DC31A1574E600C890CE /* InfoScene.swift */; };
+		9A5D341A1A118E0300D6A821 /* pantyColorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D34191A118E0300D6A821 /* pantyColorModel.swift */; };
+		9A63ACEB1A102C800038153B /* ImagineScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A63ACEA1A102C800038153B /* ImagineScene.swift */; };
+		9A6EB09D1A1D698F00527ACB /* Pop.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 9A6EB09C1A1D698F00527ACB /* Pop.aiff */; };
+		9A6EB0A01A1D6C7400527ACB /* TrackingOff.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 9A6EB09E1A1D6C7400527ACB /* TrackingOff.aiff */; };
+		9A6EB0A11A1D6C7400527ACB /* TrackingOn.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 9A6EB09F1A1D6C7400527ACB /* TrackingOn.aiff */; };
+		9AE943511A0F9AF4004AC409 /* purple_cat.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9AE9434E1A0F9AF4004AC409 /* purple_cat.jpeg */; };
+		9AE943521A0F9AF4004AC409 /* mono_cat.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9AE9434F1A0F9AF4004AC409 /* mono_cat.jpeg */; };
+		9AE943531A0F9AF4004AC409 /* cat114.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AE943501A0F9AF4004AC409 /* cat114.png */; };
+		9AE943551A0F9B4F004AC409 /* TopScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE943541A0F9B4F004AC409 /* TopScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +50,18 @@
 		1151CA7D19E4235300750B7C /* peachJohnTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = peachJohnTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1151CA8219E4235300750B7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1151CA8319E4235300750B7C /* peachJohnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = peachJohnTests.swift; sourceTree = "<group>"; };
+		9A5B6DC31A1574E600C890CE /* InfoScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoScene.swift; sourceTree = "<group>"; };
+		9A5D34191A118E0300D6A821 /* pantyColorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pantyColorModel.swift; sourceTree = "<group>"; };
+		9A63ACEA1A102C800038153B /* ImagineScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineScene.swift; sourceTree = "<group>"; };
+		9A6EB09C1A1D698F00527ACB /* Pop.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Pop.aiff; sourceTree = "<group>"; };
+		9A6EB09E1A1D6C7400527ACB /* TrackingOff.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = TrackingOff.aiff; sourceTree = "<group>"; };
+		9A6EB09F1A1D6C7400527ACB /* TrackingOn.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = TrackingOn.aiff; sourceTree = "<group>"; };
+		9A985FBC1A2E850500B3A2D5 /* Franklin Gothic Medium Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Franklin Gothic Medium Italic.ttf"; sourceTree = "<group>"; };
+		9A985FBD1A2E850500B3A2D5 /* Franklin Gothic Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Franklin Gothic Medium.ttf"; sourceTree = "<group>"; };
+		9AE9434E1A0F9AF4004AC409 /* purple_cat.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = purple_cat.jpeg; sourceTree = "<group>"; };
+		9AE9434F1A0F9AF4004AC409 /* mono_cat.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mono_cat.jpeg; sourceTree = "<group>"; };
+		9AE943501A0F9AF4004AC409 /* cat114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cat114.png; sourceTree = "<group>"; };
+		9AE943541A0F9B4F004AC409 /* TopScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,14 +103,23 @@
 		1151CA6619E4235300750B7C /* peachJohn */ = {
 			isa = PBXGroup;
 			children = (
+				9A985FBB1A2E844700B3A2D5 /* font */,
+				9A6EB09B1A1D694E00527ACB /* sound */,
+				9AE9434E1A0F9AF4004AC409 /* purple_cat.jpeg */,
+				9AE9434F1A0F9AF4004AC409 /* mono_cat.jpeg */,
+				9AE943501A0F9AF4004AC409 /* cat114.png */,
 				1151CA6919E4235300750B7C /* AppDelegate.swift */,
 				1151CA6B19E4235300750B7C /* GameScene.sks */,
 				1151CA6D19E4235300750B7C /* GameScene.swift */,
 				1151CA6F19E4235300750B7C /* GameViewController.swift */,
+				9AE943541A0F9B4F004AC409 /* TopScene.swift */,
+				9A5B6DC31A1574E600C890CE /* InfoScene.swift */,
 				1151CA7119E4235300750B7C /* Main.storyboard */,
 				1151CA7419E4235300750B7C /* Images.xcassets */,
 				1151CA7619E4235300750B7C /* LaunchScreen.xib */,
 				1151CA6719E4235300750B7C /* Supporting Files */,
+				9A63ACEA1A102C800038153B /* ImagineScene.swift */,
+				9A5D34191A118E0300D6A821 /* pantyColorModel.swift */,
 			);
 			path = peachJohn;
 			sourceTree = "<group>";
@@ -116,6 +147,25 @@
 				1151CA8219E4235300750B7C /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9A6EB09B1A1D694E00527ACB /* sound */ = {
+			isa = PBXGroup;
+			children = (
+				9A6EB09E1A1D6C7400527ACB /* TrackingOff.aiff */,
+				9A6EB09F1A1D6C7400527ACB /* TrackingOn.aiff */,
+				9A6EB09C1A1D698F00527ACB /* Pop.aiff */,
+			);
+			name = sound;
+			sourceTree = "<group>";
+		};
+		9A985FBB1A2E844700B3A2D5 /* font */ = {
+			isa = PBXGroup;
+			children = (
+				9A985FBC1A2E850500B3A2D5 /* Franklin Gothic Medium Italic.ttf */,
+				9A985FBD1A2E850500B3A2D5 /* Franklin Gothic Medium.ttf */,
+			);
+			name = font;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,6 +248,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AE943531A0F9AF4004AC409 /* cat114.png in Resources */,
+				9AE943511A0F9AF4004AC409 /* purple_cat.jpeg in Resources */,
+				9AE943521A0F9AF4004AC409 /* mono_cat.jpeg in Resources */,
+				9A6EB0A11A1D6C7400527ACB /* TrackingOn.aiff in Resources */,
+				9A6EB0A01A1D6C7400527ACB /* TrackingOff.aiff in Resources */,
+				9A6EB09D1A1D698F00527ACB /* Pop.aiff in Resources */,
 				1151CA7819E4235300750B7C /* LaunchScreen.xib in Resources */,
 				1151CA7519E4235300750B7C /* Images.xcassets in Resources */,
 				1151CA6C19E4235300750B7C /* GameScene.sks in Resources */,
@@ -219,8 +275,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A5D341A1A118E0300D6A821 /* pantyColorModel.swift in Sources */,
 				1151CA6E19E4235300750B7C /* GameScene.swift in Sources */,
 				1151CA7019E4235300750B7C /* GameViewController.swift in Sources */,
+				9AE943551A0F9B4F004AC409 /* TopScene.swift in Sources */,
+				9A5B6DC41A1574E600C890CE /* InfoScene.swift in Sources */,
+				9A63ACEB1A102C800038153B /* ImagineScene.swift in Sources */,
 				1151CA6A19E4235300750B7C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,7 +340,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Naoya Sugimoto (5JW3B2ZP2Q)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Naoya Sugimoto (5JW3B2ZP2Q)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -300,6 +361,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "ab7bd05b-c731-4b16-85c3-537765ad3650";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -322,7 +384,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Naoya Sugimoto (5JW3B2ZP2Q)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Naoya Sugimoto (5JW3B2ZP2Q)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -335,6 +398,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "ab7bd05b-c731-4b16-85c3-537765ad3650";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -344,9 +408,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Naoya Sugimoto (5JW3B2ZP2Q)";
 				INFOPLIST_FILE = peachJohn/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "ab7bd05b-c731-4b16-85c3-537765ad3650";
 			};
 			name = Debug;
 		};
@@ -354,9 +420,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Naoya Sugimoto (5JW3B2ZP2Q)";
 				INFOPLIST_FILE = peachJohn/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "ab7bd05b-c731-4b16-85c3-537765ad3650";
 			};
 			name = Release;
 		};
@@ -413,6 +481,7 @@
 				1151CA8919E4235300750B7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1151CA8A19E4235300750B7C /* Build configuration list for PBXNativeTarget "peachJohnTests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +490,7 @@
 				1151CA8C19E4235300750B7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
