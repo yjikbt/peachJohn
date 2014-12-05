@@ -15,7 +15,6 @@ class GameScene: SKScene {
     var blue:String = "39c3be"
     //time
     override func didMoveToView(view: SKView) {
-        /* Setup your scene here */
         //ユーザデフォルト
         let ud = NSUserDefaults.standardUserDefaults()
         var initGirlName:[String] = ["AYA","YURI","TOMOKA"]
@@ -151,7 +150,6 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        /* Called when a touch begins */
         
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
@@ -168,6 +166,5 @@ class GameScene: SKScene {
     }
    
     override func update(currentTime: CFTimeInterval) {
-        /* Called before each frame is rendered */
     }
 }

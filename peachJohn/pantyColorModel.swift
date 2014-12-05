@@ -10,7 +10,6 @@ import UIKit
 
 class pantyColorModel: NSObject {
     var pantyColor:UIColor!
-//    var isDarkColor:Bool!
     var colorArray = [
         UIColor.hexStr("e55884", alpha: 1.0),
         UIColor.hexStr("e8b8cf", alpha: 1.0),
