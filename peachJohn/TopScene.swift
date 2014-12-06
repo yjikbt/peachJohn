@@ -44,8 +44,8 @@ class TopScene: SKScene {
         
         // 効果音
         popSoundAction = SKAction.playSoundFileNamed("pop.mp3", waitForCompletion: false)
-        settingOnSoundAction = SKAction.playSoundFileNamed("settingon.aiff", waitForCompletion: false)
-        settingOffSoundAction = SKAction.playSoundFileNamed("settingoff.aiff", waitForCompletion: false)
+        settingOnSoundAction = SKAction.playSoundFileNamed("settingon.mp3", waitForCompletion: false)
+        settingOffSoundAction = SKAction.playSoundFileNamed("settingoff.mp3", waitForCompletion: false)
     }
     
     func addGirlName(girlNameArray:NSArray){
@@ -95,8 +95,8 @@ class TopScene: SKScene {
         
         if(isSetting){//設定終了
             isSetting = false
-            settingBtn.runAction(settingOffSoundAction)
             settingBtn.removeAllActions()
+            settingBtn.runAction(settingOffSoundAction)
             for node in self.children{
                 //名前ノードを判定
                 if node.name == "girlName0" || node.name == "girlName1" || node.name == "girlName2"{
