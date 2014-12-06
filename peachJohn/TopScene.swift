@@ -87,6 +87,7 @@ class TopScene: SKScene {
             isSetting = false
             
             //効果音
+//            let settingEndSound:SKAction = SKAction.playSoundFileNamed("TrackingOff.aiff", waitForCompletion: false)
             
             settingBtn.removeAllActions()
             for node in self.children{
