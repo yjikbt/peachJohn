@@ -43,7 +43,7 @@ class TopScene: SKScene {
         addGirlName(girlNameArray!)
         
         // 効果音
-        popSoundAction = SKAction.playSoundFileNamed("pop.aiff", waitForCompletion: false)
+        popSoundAction = SKAction.playSoundFileNamed("pop.mp3", waitForCompletion: false)
         settingOnSoundAction = SKAction.playSoundFileNamed("settingon.aiff", waitForCompletion: false)
         settingOffSoundAction = SKAction.playSoundFileNamed("settingoff.aiff", waitForCompletion: false)
     }

@@ -15,10 +15,10 @@
 		1151CA7519E4235300750B7C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1151CA7419E4235300750B7C /* Images.xcassets */; };
 		1151CA7819E4235300750B7C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1151CA7619E4235300750B7C /* LaunchScreen.xib */; };
 		1151CA8419E4235300750B7C /* peachJohnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1151CA8319E4235300750B7C /* peachJohnTests.swift */; };
+		2300FE951A32CE2200C51603 /* pop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2300FE941A32CE2200C51603 /* pop.mp3 */; };
 		9A5B6DC41A1574E600C890CE /* InfoScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5B6DC31A1574E600C890CE /* InfoScene.swift */; };
 		9A5D341A1A118E0300D6A821 /* pantyColorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D34191A118E0300D6A821 /* pantyColorModel.swift */; };
 		9A63ACEB1A102C800038153B /* ImagineScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A63ACEA1A102C800038153B /* ImagineScene.swift */; };
-		9A6EB09D1A1D698F00527ACB /* pop.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 9A6EB09C1A1D698F00527ACB /* pop.aiff */; };
 		9A6EB0A01A1D6C7400527ACB /* settingoff.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 9A6EB09E1A1D6C7400527ACB /* settingoff.aiff */; };
 		9A6EB0A11A1D6C7400527ACB /* settingon.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 9A6EB09F1A1D6C7400527ACB /* settingon.aiff */; };
 		9AE943511A0F9AF4004AC409 /* purple_cat.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9AE9434E1A0F9AF4004AC409 /* purple_cat.jpeg */; };
@@ -50,10 +50,10 @@
 		1151CA7D19E4235300750B7C /* peachJohnTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = peachJohnTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1151CA8219E4235300750B7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1151CA8319E4235300750B7C /* peachJohnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = peachJohnTests.swift; sourceTree = "<group>"; };
+		2300FE941A32CE2200C51603 /* pop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = pop.mp3; path = ../../../Downloads/pop.mp3; sourceTree = "<group>"; };
 		9A5B6DC31A1574E600C890CE /* InfoScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoScene.swift; sourceTree = "<group>"; };
 		9A5D34191A118E0300D6A821 /* pantyColorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pantyColorModel.swift; sourceTree = "<group>"; };
 		9A63ACEA1A102C800038153B /* ImagineScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineScene.swift; sourceTree = "<group>"; };
-		9A6EB09C1A1D698F00527ACB /* pop.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = pop.aiff; sourceTree = "<group>"; };
 		9A6EB09E1A1D6C7400527ACB /* settingoff.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = settingoff.aiff; sourceTree = "<group>"; };
 		9A6EB09F1A1D6C7400527ACB /* settingon.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = settingon.aiff; sourceTree = "<group>"; };
 		9A985FBC1A2E850500B3A2D5 /* Franklin Gothic Medium Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Franklin Gothic Medium Italic.ttf"; sourceTree = "<group>"; };
@@ -152,9 +152,9 @@
 		9A6EB09B1A1D694E00527ACB /* sound */ = {
 			isa = PBXGroup;
 			children = (
+				2300FE941A32CE2200C51603 /* pop.mp3 */,
 				9A6EB09E1A1D6C7400527ACB /* settingoff.aiff */,
 				9A6EB09F1A1D6C7400527ACB /* settingon.aiff */,
-				9A6EB09C1A1D698F00527ACB /* pop.aiff */,
 			);
 			name = sound;
 			sourceTree = "<group>";
@@ -248,12 +248,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2300FE951A32CE2200C51603 /* pop.mp3 in Resources */,
 				9AE943531A0F9AF4004AC409 /* cat114.png in Resources */,
 				9AE943511A0F9AF4004AC409 /* purple_cat.jpeg in Resources */,
 				9AE943521A0F9AF4004AC409 /* mono_cat.jpeg in Resources */,
 				9A6EB0A11A1D6C7400527ACB /* settingon.aiff in Resources */,
 				9A6EB0A01A1D6C7400527ACB /* settingoff.aiff in Resources */,
-				9A6EB09D1A1D698F00527ACB /* pop.aiff in Resources */,
 				1151CA7819E4235300750B7C /* LaunchScreen.xib in Resources */,
 				1151CA7519E4235300750B7C /* Images.xcassets in Resources */,
 				1151CA6C19E4235300750B7C /* GameScene.sks in Resources */,
