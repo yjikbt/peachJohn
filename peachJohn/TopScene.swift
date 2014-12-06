@@ -20,6 +20,11 @@ class TopScene: SKScene {
     var touchedGirlNameBg:SKSpriteNode!//女の子の名前の背景
     var touchedGirlNameBtn:SKNode!//女の子の名前
     
+    //効果音再生用SKActin
+    var popSoundAction:SKAction!
+    var settingOnSoundAction:SKAction!
+    var settingOffSoundAction:SKAction!
+    
     override func didMoveToView(view: SKView) {
         //背景
         self.backgroundColor = UIColor.hexStr("fc7050", alpha: 1.0)
@@ -36,6 +41,11 @@ class TopScene: SKScene {
         addInfoBtn()
         //名前をセット
         addGirlName(girlNameArray!)
+        
+        // 効果音
+        popSoundAction = SKAction.playSoundFileNamed("pop.aiff", waitForCompletion: false)
+        settingOnSoundAction = SKAction.playSoundFileNamed("settingon.aiff", waitForCompletion: false)
+        settingOffSoundAction = SKAction.playSoundFileNamed("settingoff.aiff", waitForCompletion: false)
     }
     
     func addGirlName(girlNameArray:NSArray){
@@ -85,10 +95,7 @@ class TopScene: SKScene {
         
         if(isSetting){//設定終了
             isSetting = false
-            
-            //効果音
-//            let settingEndSound:SKAction = SKAction.playSoundFileNamed("TrackingOff.aiff", waitForCompletion: false)
-            
+            settingBtn.runAction(settingOffSoundAction)
             settingBtn.removeAllActions()
             for node in self.children{
                 //名前ノードを判定
@@ -110,8 +117,7 @@ class TopScene: SKScene {
             settingBtn.runAction(loop)
             
             //効果音
-            let settingStartSound:SKAction = SKAction.playSoundFileNamed("TrackingOn.aiff", waitForCompletion: false)
-            settingBtn.runAction(settingStartSound)
+            settingBtn.runAction(settingOnSoundAction)
             
             //回転角度
             let angle:CGFloat = 0.05
@@ -155,9 +161,7 @@ class TopScene: SKScene {
             let popAction:SKAction = SKAction.sequence([scale,unscale,wait,startEnlarging])
             //アクション実行
             touchedGirlNameBtn.runAction(popAction)
-            
-            let popSoundAction:SKAction = SKAction.playSoundFileNamed("Pop.aiff", waitForCompletion: false)
-            touchedGirlNameBg.runAction(popSoundAction)
+            touchedGirlNameBtn.runAction(popSoundAction)
         }
     }
     
