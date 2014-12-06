@@ -17,6 +17,8 @@
 		1151CA8419E4235300750B7C /* peachJohnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1151CA8319E4235300750B7C /* peachJohnTests.swift */; };
 		9A5B6DC41A1574E600C890CE /* InfoScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5B6DC31A1574E600C890CE /* InfoScene.swift */; };
 		9A5D341A1A118E0300D6A821 /* pantyColorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D34191A118E0300D6A821 /* pantyColorModel.swift */; };
+		9A6174B61A32A33800983B35 /* Franklin Gothic Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A985FBD1A2E850500B3A2D5 /* Franklin Gothic Medium.ttf */; };
+		9A6174B71A32A3B200983B35 /* A-OTF-ShinGoPro-Medium_0.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9A6174B21A329C7000983B35 /* A-OTF-ShinGoPro-Medium_0.otf */; };
 		9A63ACEB1A102C800038153B /* ImagineScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A63ACEA1A102C800038153B /* ImagineScene.swift */; };
 		9A6EB09D1A1D698F00527ACB /* Pop.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 9A6EB09C1A1D698F00527ACB /* Pop.aiff */; };
 		9A6EB0A01A1D6C7400527ACB /* TrackingOff.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 9A6EB09E1A1D6C7400527ACB /* TrackingOff.aiff */; };
@@ -52,11 +54,11 @@
 		1151CA8319E4235300750B7C /* peachJohnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = peachJohnTests.swift; sourceTree = "<group>"; };
 		9A5B6DC31A1574E600C890CE /* InfoScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoScene.swift; sourceTree = "<group>"; };
 		9A5D34191A118E0300D6A821 /* pantyColorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pantyColorModel.swift; sourceTree = "<group>"; };
+		9A6174B21A329C7000983B35 /* A-OTF-ShinGoPro-Medium_0.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "A-OTF-ShinGoPro-Medium_0.otf"; sourceTree = "<group>"; };
 		9A63ACEA1A102C800038153B /* ImagineScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineScene.swift; sourceTree = "<group>"; };
 		9A6EB09C1A1D698F00527ACB /* Pop.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Pop.aiff; sourceTree = "<group>"; };
 		9A6EB09E1A1D6C7400527ACB /* TrackingOff.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = TrackingOff.aiff; sourceTree = "<group>"; };
 		9A6EB09F1A1D6C7400527ACB /* TrackingOn.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = TrackingOn.aiff; sourceTree = "<group>"; };
-		9A985FBC1A2E850500B3A2D5 /* Franklin Gothic Medium Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Franklin Gothic Medium Italic.ttf"; sourceTree = "<group>"; };
 		9A985FBD1A2E850500B3A2D5 /* Franklin Gothic Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Franklin Gothic Medium.ttf"; sourceTree = "<group>"; };
 		9AE9434E1A0F9AF4004AC409 /* purple_cat.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = purple_cat.jpeg; sourceTree = "<group>"; };
 		9AE9434F1A0F9AF4004AC409 /* mono_cat.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mono_cat.jpeg; sourceTree = "<group>"; };
@@ -162,7 +164,7 @@
 		9A985FBB1A2E844700B3A2D5 /* font */ = {
 			isa = PBXGroup;
 			children = (
-				9A985FBC1A2E850500B3A2D5 /* Franklin Gothic Medium Italic.ttf */,
+				9A6174B21A329C7000983B35 /* A-OTF-ShinGoPro-Medium_0.otf */,
 				9A985FBD1A2E850500B3A2D5 /* Franklin Gothic Medium.ttf */,
 			);
 			name = font;
@@ -248,6 +250,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A6174B71A32A3B200983B35 /* A-OTF-ShinGoPro-Medium_0.otf in Resources */,
+				9A6174B61A32A33800983B35 /* Franklin Gothic Medium.ttf in Resources */,
 				9AE943531A0F9AF4004AC409 /* cat114.png in Resources */,
 				9AE943511A0F9AF4004AC409 /* purple_cat.jpeg in Resources */,
 				9AE943521A0F9AF4004AC409 /* mono_cat.jpeg in Resources */,
