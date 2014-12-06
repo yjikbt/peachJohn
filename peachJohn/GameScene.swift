@@ -120,7 +120,7 @@ class GameScene: SKScene {
     }
     
     func addStartBtn(waitTime:NSTimeInterval,animationDuration:NSTimeInterval){
-        let startBtn = SKLabelNode(fontNamed:"HelveticaNeue")
+        let startBtn = SKLabelNode(fontNamed: "ShinGoPro-Medium")
         startBtn.text = "はじめる"
         startBtn.name = "startBtn"
         startBtn.fontSize = 40
@@ -136,7 +136,7 @@ class GameScene: SKScene {
     }
     
     func addTitle(){
-        let title = SKLabelNode(fontNamed:"Franklin Gothic Medium")
+        let title = SKLabelNode(fontNamed:"FranklinGothic-Medium")
         let px = Double(CGRectGetMidX(self.frame)) * 0.9
         let py = Double(CGRectGetMidY(self.frame)) * 1.5
         

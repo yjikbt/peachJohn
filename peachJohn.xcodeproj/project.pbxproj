@@ -18,6 +18,8 @@
 		2300FE951A32CE2200C51603 /* pop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2300FE941A32CE2200C51603 /* pop.mp3 */; };
 		9A5B6DC41A1574E600C890CE /* InfoScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5B6DC31A1574E600C890CE /* InfoScene.swift */; };
 		9A5D341A1A118E0300D6A821 /* pantyColorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D34191A118E0300D6A821 /* pantyColorModel.swift */; };
+		9A6174B61A32A33800983B35 /* Franklin Gothic Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A985FBD1A2E850500B3A2D5 /* Franklin Gothic Medium.ttf */; };
+		9A6174B71A32A3B200983B35 /* A-OTF-ShinGoPro-Medium_0.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9A6174B21A329C7000983B35 /* A-OTF-ShinGoPro-Medium_0.otf */; };
 		9A63ACEB1A102C800038153B /* ImagineScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A63ACEA1A102C800038153B /* ImagineScene.swift */; };
 		9A6EB0A01A1D6C7400527ACB /* settingoff.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 9A6EB09E1A1D6C7400527ACB /* settingoff.aiff */; };
 		9A6EB0A11A1D6C7400527ACB /* settingon.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 9A6EB09F1A1D6C7400527ACB /* settingon.aiff */; };
@@ -53,6 +55,7 @@
 		2300FE941A32CE2200C51603 /* pop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = pop.mp3; path = ../../../Downloads/pop.mp3; sourceTree = "<group>"; };
 		9A5B6DC31A1574E600C890CE /* InfoScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoScene.swift; sourceTree = "<group>"; };
 		9A5D34191A118E0300D6A821 /* pantyColorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pantyColorModel.swift; sourceTree = "<group>"; };
+		9A6174B21A329C7000983B35 /* A-OTF-ShinGoPro-Medium_0.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "A-OTF-ShinGoPro-Medium_0.otf"; sourceTree = "<group>"; };
 		9A63ACEA1A102C800038153B /* ImagineScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineScene.swift; sourceTree = "<group>"; };
 		9A6EB09E1A1D6C7400527ACB /* settingoff.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = settingoff.aiff; sourceTree = "<group>"; };
 		9A6EB09F1A1D6C7400527ACB /* settingon.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = settingon.aiff; sourceTree = "<group>"; };
@@ -162,7 +165,7 @@
 		9A985FBB1A2E844700B3A2D5 /* font */ = {
 			isa = PBXGroup;
 			children = (
-				9A985FBC1A2E850500B3A2D5 /* Franklin Gothic Medium Italic.ttf */,
+				9A6174B21A329C7000983B35 /* A-OTF-ShinGoPro-Medium_0.otf */,
 				9A985FBD1A2E850500B3A2D5 /* Franklin Gothic Medium.ttf */,
 			);
 			name = font;
