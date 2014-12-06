@@ -29,6 +29,7 @@ class GameScene: SKScene {
         let titleTime:NSTimeInterval = 1.0
         let iconTime:NSTimeInterval = 2.0
         self.addTitle()
+        self.addDesc()
         self.addRectangle()
         self.addStartBtn(titleTime,animationDuration:iconTime)
     }
@@ -147,6 +148,16 @@ class GameScene: SKScene {
         title.position = CGPoint(x:px,y:py)
         
         self.addChild(title)
+    }
+    
+    func addDesc(){
+        let desc = SKSpriteNode(imageNamed: "purple_cat.jpeg")
+        let px = Double(CGRectGetMidX(self.frame)) * 0.9
+        let py = Double(CGRectGetMidY(self.frame)) * 1.2
+        
+        desc.position = CGPoint(x:px,y:py)
+        
+        self.addChild(desc)
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
