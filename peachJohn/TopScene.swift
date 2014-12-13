@@ -92,9 +92,9 @@ class TopScene: SKScene {
     }
     
     func addSettingBtn(){
-        settingBtn = SKSpriteNode(imageNamed: "cat114")
-        settingBtn.size = CGSizeMake(100, 100)
-        settingBtn.position = CGPoint(x:CGRectGetMaxY(self.frame) - 100, y:CGRectGetMaxY(self.frame) - 50);
+        settingBtn = SKSpriteNode(imageNamed: "haguruma")
+        settingBtn.size = CGSizeMake(150, 150)
+        settingBtn.position = CGPoint(x:CGRectGetMaxY(self.frame) - 50, y:CGRectGetMaxY(self.frame) - 0);
         println(settingBtn.position)
         settingBtn.name = "settingBtn"
         
