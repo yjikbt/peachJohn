@@ -9,6 +9,8 @@
 import SpriteKit
 
 class ImagineScene: SKScene {
+    //効果音再生用SKActin
+    var bgSoundAction:SKAction!
     override func didMoveToView(view: SKView) {
         //背景
         self.backgroundColor = SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0)
@@ -17,6 +19,9 @@ class ImagineScene: SKScene {
         let ud = NSUserDefaults.standardUserDefaults()
         var girlName:String = ud.stringForKey("touchedName")!
         var pantyColor = SKColor(red: 0, green: 0, blue: 0, alpha: 1.0)
+        
+        // 効果音
+        bgSoundAction = SKAction.playSoundFileNamed("bird.mp3", waitForCompletion: false)
         
         //モデルからインスタンスを生成
         var panty:pantyColorModel = pantyColorModel()
@@ -82,6 +87,8 @@ class ImagineScene: SKScene {
         
         //アニメーション実行
         bg.runAction(changeBackgroundAnimation)
+        //サウンド再生
+        bg.runAction(bgSoundAction)
     }
 }
 

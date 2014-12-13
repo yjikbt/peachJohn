@@ -9,6 +9,7 @@
 import UIKit
 import SpriteKit
 import Foundation
+import AVFoundation
 
 class TopScene: SKScene {
     var settingBtn:SKSpriteNode!
@@ -24,6 +25,7 @@ class TopScene: SKScene {
     var popSoundAction:SKAction!
     var settingOnSoundAction:SKAction!
     var settingOffSoundAction:SKAction!
+    var audioPlayer = AVAudioPlayer()
     
     override func didMoveToView(view: SKView) {
         //背景
@@ -44,8 +46,16 @@ class TopScene: SKScene {
         
         // 効果音
         popSoundAction = SKAction.playSoundFileNamed("pop.mp3", waitForCompletion: false)
-        settingOnSoundAction = SKAction.playSoundFileNamed("settingon.mp3", waitForCompletion: false)
-        settingOffSoundAction = SKAction.playSoundFileNamed("settingoff.mp3", waitForCompletion: false)
+        settingOnSoundAction = SKAction.playSoundFileNamed("settingOn.wav", waitForCompletion: false)
+        settingOffSoundAction = SKAction.playSoundFileNamed("settingOff.wav", waitForCompletion: false)
+        
+        //途中で停止するかもしれない効果音
+        var alertSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("drum", ofType: "wav")!)
+        var error:NSError?
+        audioPlayer = AVAudioPlayer(contentsOfURL: alertSound, error: &error)
+        //リピート再生
+        audioPlayer.numberOfLoops = -1
+        audioPlayer.prepareToPlay()
     }
     
     func addGirlName(girlNameArray:NSArray){
@@ -188,6 +198,11 @@ class TopScene: SKScene {
         //アクション実行
         doGirlNameAction(btnSeq, bgAction: bgGroup)
         
+        //サウンドの再生位置を最初に戻す
+        audioPlayer.currentTime = 0
+        //サウンド再生
+        audioPlayer.play()
+        
         //すべてのノードを探索
         for node in self.children{
             //タッチしたボタン,その背景以外
@@ -202,16 +217,18 @@ class TopScene: SKScene {
         let enlarge:SKAction = SKAction.resizeToHeight(CGRectGetHeight(self.frame) * 2, duration: 0.5)
         let burn:SKAction = SKAction.scaleTo(10.0, duration: 0.5)
         let fadeOut:SKAction = SKAction.fadeAlphaTo(0, duration: 0.2)
-        let dimming:SKAction = SKAction.colorizeWithColor(self.backgroundColor, colorBlendFactor: 1.0, duration: 1.0)
+        let dimming:SKAction = SKAction.colorizeWithColor(SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0), colorBlendFactor: 1.0, duration: 1.0)
         let transitionImagineScene:SKAction = SKAction.runBlock({
             //ユーザデフォルト更新
             let ud = NSUserDefaults.standardUserDefaults()
             let nameLabelText = self.touchedGirlNameBtn as SKLabelNode
             ud.setObject(nameLabelText.text, forKey: "touchedName")
             //妄想シーンに移動
-            let fadeTransition:SKTransition = SKTransition.fadeWithColor(self.backgroundColor, duration: 1.0)
+            let fadeTransition:SKTransition = SKTransition.fadeWithColor(SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0), duration: 1.0)
             var imagineScene:ImagineScene = ImagineScene(size:self.size)
             
+            //サウンド停止
+            self.audioPlayer.stop()
             self.view?.presentScene(imagineScene, transition: fadeTransition)
         })
         
@@ -221,8 +238,17 @@ class TopScene: SKScene {
         //ボタン背景のアクションを設定
         let bgSeq:SKAction = SKAction.sequence([enlarge,dimming,transitionImagineScene])
         
+        //サウンドフェードアウト
+        soundFadeOut()
         //アクション実行
         doGirlNameAction(btnGroup, bgAction: bgSeq)
+    }
+    
+    func soundFadeOut(){
+        while(audioPlayer.volume > 0.08){
+            println(audioPlayer.volume)
+            audioPlayer.volume = audioPlayer.volume - 0.01
+        }
     }
     
     func doGirlNameAction(btnAction:SKAction,bgAction:SKAction){
@@ -362,6 +388,8 @@ class TopScene: SKScene {
                 //ボタン背景のアクションを設定
                 let bgGroup:SKAction = SKAction.group([reduce,dimming])
                 
+                //サウンド停止
+                audioPlayer.stop()
                 //アクション実行
                 doGirlNameAction(scale, bgAction: bgGroup)
                 
