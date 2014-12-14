@@ -110,12 +110,12 @@ class TopScene: SKScene {
             for node in self.children{
                 //名前ノードを判定
                 if node.name == "girlName0" || node.name == "girlName1" || node.name == "girlName2"{
-                    let horizontal:SKAction = SKAction.rotateToAngle(0, duration: 0.3)
+                    //元の大きさに戻す
+                    let unscale:SKAction = SKAction.scaleTo(1.0, duration: 0.8)
                     node.removeAllActions()
-                    //水平に戻す
-                    horizontal.timingMode = SKActionTimingMode.EaseOut
+                    unscale.timingMode = SKActionTimingMode.EaseOut
                     //アクション実行
-                    node.runAction(horizontal)
+                    node.runAction(unscale)
                 }
             }
         }else{//設定開始
@@ -129,18 +129,11 @@ class TopScene: SKScene {
             //効果音
             settingBtn.runAction(settingOnSoundAction)
             
-            //回転角度
-            let angle:CGFloat = 0.05
-            //回転時間間隔
-            let rotateDuration:NSTimeInterval = 0.8
+            let scale:SKAction = SKAction.scaleTo(1.15, duration: 0.8)
+            let unscale:SKAction = SKAction.scaleTo(1.0, duration: 0.8)
+            let scaleSeq:SKAction = SKAction.sequence([scale,unscale])
             
-            //時計回り
-            let clockwise:SKAction = SKAction.rotateToAngle(-angle, duration: rotateDuration)
-            //反時計回り
-            let counterClockwise:SKAction = SKAction.rotateToAngle(angle, duration: rotateDuration)
-            let rotateSeq:SKAction = SKAction.sequence([clockwise,counterClockwise])
-            
-            let loop2:SKAction = SKAction.repeatActionForever(rotateSeq)
+            let loop2:SKAction = SKAction.repeatActionForever(scaleSeq)
             
             //すべてのノードを探索
             for node in self.children{
@@ -157,8 +150,8 @@ class TopScene: SKScene {
     func popActions(){
         if(isMoving){
             //ポップアニメーション
-            let scale:SKAction = SKAction.scaleTo(1.1, duration: 0.1)
-            let unscale:SKAction = SKAction.scaleTo(1.0, duration: 0.1)
+            let scale:SKAction = SKAction.scaleTo(1.25, duration: 0.15)
+            let unscale:SKAction = SKAction.scaleTo(1.0, duration: 0.15)
             let wait:SKAction = SKAction.waitForDuration(0.2)
             let startEnlarging:SKAction = SKAction.runBlock( {
                 //クロージャ?だからselfをつけないと怒られる
@@ -357,9 +350,6 @@ class TopScene: SKScene {
                 //alertを表示
                 currentViewController?.presentViewController(alertController, animated: true, completion: nil)
                 
-            }else if(touchedNode.name == "settingBtn"){
-                switchSetting()
-                
             }else if(touchedNode.name == "infoBtn"){
                 //infoシーンに移動
                 let revealTransition:SKTransition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 0.5)
@@ -398,6 +388,10 @@ class TopScene: SKScene {
                     //フェードアウトして消滅
                     node.runAction(fadeIn)
                 }
+            }
+            
+            if(touchedNode.name == "settingBtn"){
+                switchSetting()
             }
         }
     }
