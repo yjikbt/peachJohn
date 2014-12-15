@@ -29,7 +29,7 @@ class TopScene: SKScene {
     
     override func didMoveToView(view: SKView) {
         //背景
-        self.backgroundColor = UIColor.hexStr("fc7050", alpha: 1.0)
+        self.backgroundColor = UIColor.hexStr("ffffff", alpha: 1.0)
         self.scaleMode = SKSceneScaleMode.AspectFill
         
         //ユーザデフォルト
@@ -82,7 +82,7 @@ class TopScene: SKScene {
     }
     
     func addInfoBtn(){
-        let infoBtn = SKSpriteNode(imageNamed: "cat114")
+        let infoBtn = SKSpriteNode(imageNamed: "info")
         infoBtn.size = CGSizeMake(40, 40)
         infoBtn.position = CGPoint(x:350, y:50)
         println(infoBtn.position)
