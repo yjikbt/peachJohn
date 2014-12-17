@@ -13,6 +13,8 @@ class GameScene: SKScene {
     var rectangle:SKSpriteNode!
     var orange:String = "fc7050"
     var blue:String = "39c3be"
+    let sw = UIScreen.mainScreen().bounds.size.width
+    let sh = UIScreen.mainScreen().bounds.size.height
     //time
     override func didMoveToView(view: SKView) {
         //ユーザデフォルト
@@ -28,36 +30,13 @@ class GameScene: SKScene {
         //待ち時間
         let titleTime:NSTimeInterval = 1.0
         let iconTime:NSTimeInterval = 2.0
-//        self.addTitle()
+        
         self.addIntro()
-//        self.addRectangle()
         self.addStartBtn(titleTime,animationDuration:iconTime)
     }
     
-//    func addRectangle(){
-//        // 四角を作成
-//        rectangle = SKSpriteNode(
-//            color: UIColor.hexStr("fc7050", alpha: 1.0),
-//            size: CGSizeMake(80, self.frame.size.height)
-//        )
-//        
-//        let rx = Double(CGRectGetMidX(self.frame)) - 180
-//        let ry = Double(CGRectGetMidY(self.frame))
-//        rectangle.position = CGPoint(
-//            x:rx,
-//            y:ry
-//        )
-//        
-//        rectangle.name = "rectangle"
-//        
-//        self.addChild(rectangle)
-//    }
-    
-    
     func addStartBtn(waitTime:NSTimeInterval,animationDuration:NSTimeInterval){
         let startBtn = SKLabelNode(fontNamed: "ShinGoPro-Medium")
-        let sw = UIScreen.mainScreen().bounds.size.width
-        let sh = UIScreen.mainScreen().bounds.size.height
         startBtn.text = "はじめる"
         startBtn.name = "startBtn"
         startBtn.fontSize = 40
@@ -89,8 +68,6 @@ class GameScene: SKScene {
     
     func addIntro(){
         let intro = SKSpriteNode(imageNamed: "intro")
-        let sw = UIScreen.mainScreen().bounds.size.width
-        let sh = UIScreen.mainScreen().bounds.size.height
         intro.size = CGSizeMake(sw, sh)
         intro.position = CGPoint(x:sw / 2,y:sh / 2)
         self.addChild(intro)
@@ -110,8 +87,5 @@ class GameScene: SKScene {
                 self.view?.presentScene(topScene, transition: fadeTransition)
             }
         }
-    }
-   
-    override func update(currentTime: CFTimeInterval) {
     }
 }

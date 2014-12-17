@@ -88,9 +88,7 @@ class TopScene: SKScene {
         let infoBtn = SKSpriteNode(imageNamed: "info")
         infoBtn.size = CGSizeMake(40, 40)
         infoBtn.position = CGPoint(x:infoBtn.size.width, y:50)
-        println(infoBtn.position)
         infoBtn.name = "infoBtn"
-        
         self.addChild(infoBtn)
     }
     
@@ -98,9 +96,7 @@ class TopScene: SKScene {
         settingBtn = SKSpriteNode(imageNamed: "haguruma")
         settingBtn.size = CGSizeMake(150, 150)
         settingBtn.position = CGPoint(x:sw, y:sh);
-        println(settingBtn.position)
         settingBtn.name = "settingBtn"
-        
         self.addChild(settingBtn)
     }
     
@@ -242,7 +238,6 @@ class TopScene: SKScene {
     
     func soundFadeOut(){
         while(audioPlayer.volume > 0.08){
-            println(audioPlayer.volume)
             audioPlayer.volume = audioPlayer.volume - 0.01
         }
     }
