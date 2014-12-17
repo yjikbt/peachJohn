@@ -13,6 +13,7 @@ class GameScene: SKScene {
     var blue:String = "39c3be"
     let sw = UIScreen.mainScreen().bounds.size.width
     let sh = UIScreen.mainScreen().bounds.size.height
+    var bgSoundAction:SKAction!
     
     override func didMoveToView(view: SKView) {
         //背景
@@ -60,6 +61,9 @@ class GameScene: SKScene {
                 //トップページに遷移
                 let fadeTransition:SKTransition = SKTransition.fadeWithColor(SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0), duration: 4.0)
                 var topScene:TopScene = TopScene(size:self.size)
+                // 効果音
+                bgSoundAction = SKAction.playSoundFileNamed("bird.mp3", waitForCompletion: false)
+                self.runAction(bgSoundAction)
                 self.view?.presentScene(topScene, transition: fadeTransition)
             }
         }

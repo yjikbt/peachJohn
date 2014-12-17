@@ -16,6 +16,8 @@
 		1151CA7819E4235300750B7C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1151CA7619E4235300750B7C /* LaunchScreen.xib */; };
 		1151CA8419E4235300750B7C /* peachJohnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1151CA8319E4235300750B7C /* peachJohnTests.swift */; };
 		9A0587D51A41980800A00A86 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0587D41A41980800A00A86 /* UserDefault.swift */; };
+		9A0587DC1A41B1D700A00A86 /* InfoOff.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9A0587DA1A41B1D700A00A86 /* InfoOff.wav */; };
+		9A0587DD1A41B1D700A00A86 /* InfoOn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9A0587DB1A41B1D700A00A86 /* InfoOn.wav */; };
 		9A5B6DC41A1574E600C890CE /* InfoScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5B6DC31A1574E600C890CE /* InfoScene.swift */; };
 		9A5D341A1A118E0300D6A821 /* pantyColorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D34191A118E0300D6A821 /* pantyColorModel.swift */; };
 		9A6174B61A32A33800983B35 /* Franklin Gothic Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A985FBD1A2E850500B3A2D5 /* Franklin Gothic Medium.ttf */; };
@@ -57,6 +59,8 @@
 		1151CA8219E4235300750B7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1151CA8319E4235300750B7C /* peachJohnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = peachJohnTests.swift; sourceTree = "<group>"; };
 		9A0587D41A41980800A00A86 /* UserDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
+		9A0587DA1A41B1D700A00A86 /* InfoOff.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = InfoOff.wav; sourceTree = "<group>"; };
+		9A0587DB1A41B1D700A00A86 /* InfoOn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = InfoOn.wav; sourceTree = "<group>"; };
 		9A5B6DC31A1574E600C890CE /* InfoScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoScene.swift; sourceTree = "<group>"; };
 		9A5D34191A118E0300D6A821 /* pantyColorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pantyColorModel.swift; sourceTree = "<group>"; };
 		9A6174B21A329C7000983B35 /* A-OTF-ShinGoPro-Medium_0.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "A-OTF-ShinGoPro-Medium_0.otf"; sourceTree = "<group>"; };
@@ -164,6 +168,8 @@
 		9A6EB09B1A1D694E00527ACB /* sound */ = {
 			isa = PBXGroup;
 			children = (
+				9A0587DA1A41B1D700A00A86 /* InfoOff.wav */,
+				9A0587DB1A41B1D700A00A86 /* InfoOn.wav */,
 				9AB684AD1A3C7FF40012C89C /* pop.mp3 */,
 				9AB684A51A3C4ACD0012C89C /* bird.mp3 */,
 				9AB684A11A3C49200012C89C /* settingOn.wav */,
@@ -265,12 +271,14 @@
 				9A6174B71A32A3B200983B35 /* A-OTF-ShinGoPro-Medium_0.otf in Resources */,
 				9AB684A61A3C4ACD0012C89C /* bird.mp3 in Resources */,
 				9A6174B61A32A33800983B35 /* Franklin Gothic Medium.ttf in Resources */,
+				9A0587DD1A41B1D700A00A86 /* InfoOn.wav in Resources */,
 				9AB684A41A3C49270012C89C /* settingOff.wav in Resources */,
 				9AB684A01A3C44360012C89C /* drum.wav in Resources */,
 				9AB684AA1A3C7C2C0012C89C /* haguruma.png in Resources */,
 				9AB684AE1A3C7FF40012C89C /* pop.mp3 in Resources */,
 				1151CA7819E4235300750B7C /* LaunchScreen.xib in Resources */,
 				1151CA7519E4235300750B7C /* Images.xcassets in Resources */,
+				9A0587DC1A41B1D700A00A86 /* InfoOff.wav in Resources */,
 				1151CA6C19E4235300750B7C /* GameScene.sks in Resources */,
 				9AB684A21A3C49200012C89C /* settingOn.wav in Resources */,
 				9A62CBC71A3F1F050056C8E9 /* info.png in Resources */,

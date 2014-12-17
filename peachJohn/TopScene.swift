@@ -25,6 +25,7 @@ class TopScene: SKScene {
     var popSoundAction:SKAction!
     var settingOnSoundAction:SKAction!
     var settingOffSoundAction:SKAction!
+    var infoOnSoundAction:SKAction!
     var audioPlayer = AVAudioPlayer()
     //画面サイズ
     let sw = UIScreen.mainScreen().bounds.size.width
@@ -47,6 +48,7 @@ class TopScene: SKScene {
         popSoundAction = SKAction.playSoundFileNamed("pop.mp3", waitForCompletion: false)
         settingOnSoundAction = SKAction.playSoundFileNamed("settingOn.wav", waitForCompletion: false)
         settingOffSoundAction = SKAction.playSoundFileNamed("settingOff.wav", waitForCompletion: false)
+        infoOnSoundAction = SKAction.playSoundFileNamed("InfoOn.wav", waitForCompletion: false)
         
         //途中で停止するかもしれない効果音
         var alertSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("drum", ofType: "wav")!)
@@ -345,6 +347,8 @@ class TopScene: SKScene {
                 //infoシーンに移動
                 let revealTransition:SKTransition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 0.5)
                 var infoScene:InfoScene = InfoScene(size:self.size)
+                
+                touchedNode.runAction(infoOnSoundAction)
                 
                 self.view?.presentScene(infoScene, transition: revealTransition)
             }
