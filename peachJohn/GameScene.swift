@@ -10,26 +10,27 @@
 import SpriteKit
 
 class GameScene: SKScene {
-    var rectangle:SKSpriteNode!
-    var orange:String = "fc7050"
     var blue:String = "39c3be"
     let sw = UIScreen.mainScreen().bounds.size.width
     let sh = UIScreen.mainScreen().bounds.size.height
     //time
     override func didMoveToView(view: SKView) {
-        //ユーザデフォルト
-        let ud = NSUserDefaults.standardUserDefaults()
-        var initGirlName:[String] = ["AYA","YURI","TOMOKA"]
-        ud.setObject(initGirlName, forKey: "girlNameArray")
-        ud.synchronize()
-        ud.setObject("", forKey:"touchedName")
-        ud.synchronize()
         //背景
         self.backgroundColor = SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0)
         self.scaleMode = SKSceneScaleMode.AspectFill
         //待ち時間
         let titleTime:NSTimeInterval = 1.0
         let iconTime:NSTimeInterval = 2.0
+        
+        let ud = NSUserDefaults.standardUserDefaults()
+        
+        //名前のデータがないときに初期データをセット
+        if ((ud.objectForKey("topGirl") != nil) || (ud.objectForKey("centerGirl") != nil) || (ud.objectForKey("bottomGirl")) != nil){
+            ud.setObject("topGirl", forKey: "AYA")
+            ud.setObject("centerGirl", forKey: "YURI")
+            ud.setObject("bottomGirl", forKey: "MARIKO")
+            ud.setObject("touchedName", forKey: "")
+        }
         
         self.addIntro()
         self.addStartBtn(titleTime,animationDuration:iconTime)

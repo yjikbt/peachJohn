@@ -16,8 +16,6 @@ class ImagineScene: SKScene {
         self.backgroundColor = SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0)
         self.scaleMode = SKSceneScaleMode.AspectFill
         
-        let ud = NSUserDefaults.standardUserDefaults()
-        var girlName:String = ud.stringForKey("touchedName")!
         var pantyColor = SKColor(red: 0, green: 0, blue: 0, alpha: 1.0)
         
         // 効果音
@@ -26,14 +24,14 @@ class ImagineScene: SKScene {
         //モデルからインスタンスを生成
         var panty:pantyColorModel = pantyColorModel()
         
-        addGirlName(girlName)
+        addGirlName()
         addBackground(panty.getBgColor())
     }
    
-    func addGirlName(name:String){
+    func addGirlName(){
         //女の子の名前をセット
         let girlLabelName = SKLabelNode(fontNamed:"DINAlternate-Bold")
-        girlLabelName.text = name
+        girlLabelName.text = figUD.touchedName.get() as String
         girlLabelName.fontSize = 50
         girlLabelName.fontColor = SKColor(red: 0.28, green: 0.28, blue: 0.28, alpha: 1.0)
         girlLabelName.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))

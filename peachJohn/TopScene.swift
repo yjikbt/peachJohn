@@ -35,17 +35,13 @@ class TopScene: SKScene {
         self.backgroundColor = UIColor.hexStr("ffffff", alpha: 1.0)
         self.scaleMode = SKSceneScaleMode.AspectFill
         
-        //ユーザデフォルト
-        let ud = NSUserDefaults.standardUserDefaults()
-        var girlNameArray = ud.arrayForKey("girlNameArray")
-        
         //設定ボタンをセット
         addSettingBtn()
         
         //infoボタンをセット
         addInfoBtn()
         //名前をセット
-        addGirlName(girlNameArray!)
+        addGirlName()
         
         // 効果音
         popSoundAction = SKAction.playSoundFileNamed("pop.mp3", waitForCompletion: false)
@@ -61,12 +57,19 @@ class TopScene: SKScene {
         audioPlayer.prepareToPlay()
     }
     
-    func addGirlName(girlNameArray:NSArray){
+    func addGirlName(){
         for var i = 0; i < 3; i++ {
             var cnt:CGFloat = CGFloat(3 - i)
             var girlNameBtn = SKLabelNode(fontNamed:"DINAlternate-Bold")
             //ユーザデフォルトから名前を取得
-            girlNameBtn.text = String(girlNameArray[i] as NSString)
+            if(i == 0){
+                girlNameBtn.text = String(figUD.topGirl.get() as String)
+            }else if(i == 1){
+                girlNameBtn.text = String(figUD.centerGirl.get() as String)
+            }else if(i == 2){
+                girlNameBtn.text = String(figUD.bottomGirl.get() as String)
+            }
+            
             girlNameBtn.name = "girlName" + String(i)
             girlNameBtn.fontSize = 50
             girlNameBtn.fontColor = SKColor(red: 0.28, green: 0.28, blue: 0.28, alpha: 1.0)
@@ -212,9 +215,8 @@ class TopScene: SKScene {
         let dimming:SKAction = SKAction.colorizeWithColor(SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0), colorBlendFactor: 1.0, duration: 1.0)
         let transitionImagineScene:SKAction = SKAction.runBlock({
             //ユーザデフォルト更新
-            let ud = NSUserDefaults.standardUserDefaults()
             let nameLabelText = self.touchedGirlNameBtn as SKLabelNode
-            ud.setObject(nameLabelText.text, forKey: "touchedName")
+            figUD.touchedName.set(nameLabelText.text)
             //妄想シーンに移動
             let fadeTransition:SKTransition = SKTransition.fadeWithColor(SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0), duration: 1.0)
             var imagineScene:ImagineScene = ImagineScene(size:self.size)
@@ -294,25 +296,17 @@ class TopScene: SKScene {
                         
                         if textFields != nil{
                             for textField:UITextField in textFields!{
-                                //女の子の名前を更新
                                 //ユーザデフォルトを更新
-                                let ud = NSUserDefaults.standardUserDefaults()
-                                var array:[String] = ud.objectForKey("girlNameArray") as [String]!
-                                
                                 switch indexStr {
                                     case "0":
-                                        array[0] = textField.text
+                                        figUD.topGirl.set(textField.text)
                                     case "1":
-                                        array[1] = textField.text
+                                        figUD.centerGirl.set(textField.text)
                                     case "2":
-                                        array[2] = textField.text
+                                        figUD.bottomGirl.set(textField.text)
                                     default:
                                         break
                                 }
-                                
-                                //更新
-                                ud.setObject(array, forKey: "girlNameArray")
-                                ud.synchronize()
                                 
                                 //表示中の名前を更新
                                 girlNameBtn.text = textField.text
@@ -329,7 +323,6 @@ class TopScene: SKScene {
                     handler:{
                         (aciton:UIAlertAction!) -> Void in
                         //cancel押したときの処理
-                        
                 })
                 
                 //根元にあるview
