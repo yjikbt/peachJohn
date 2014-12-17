@@ -26,6 +26,9 @@ class TopScene: SKScene {
     var settingOnSoundAction:SKAction!
     var settingOffSoundAction:SKAction!
     var audioPlayer = AVAudioPlayer()
+    //画面サイズ
+    let sw = UIScreen.mainScreen().bounds.size.width
+    let sh = UIScreen.mainScreen().bounds.size.height
     
     override func didMoveToView(view: SKView) {
         //背景
@@ -84,7 +87,7 @@ class TopScene: SKScene {
     func addInfoBtn(){
         let infoBtn = SKSpriteNode(imageNamed: "info")
         infoBtn.size = CGSizeMake(40, 40)
-        infoBtn.position = CGPoint(x:350, y:50)
+        infoBtn.position = CGPoint(x:infoBtn.size.width, y:50)
         println(infoBtn.position)
         infoBtn.name = "infoBtn"
         
@@ -94,7 +97,7 @@ class TopScene: SKScene {
     func addSettingBtn(){
         settingBtn = SKSpriteNode(imageNamed: "haguruma")
         settingBtn.size = CGSizeMake(150, 150)
-        settingBtn.position = CGPoint(x:CGRectGetMaxY(self.frame) - 50, y:CGRectGetMaxY(self.frame) - 0);
+        settingBtn.position = CGPoint(x:sw, y:sh);
         println(settingBtn.position)
         settingBtn.name = "settingBtn"
         
