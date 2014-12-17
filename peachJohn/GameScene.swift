@@ -58,7 +58,7 @@ class GameScene: SKScene {
             //スタートボタンをタッチ
             if node.name == "startBtn"{
                 //トップページに遷移
-                let fadeTransition:SKTransition = SKTransition.fadeWithColor(SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0), duration: 5.0)
+                let fadeTransition:SKTransition = SKTransition.fadeWithColor(SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0), duration: 4.0)
                 var topScene:TopScene = TopScene(size:self.size)
                 self.view?.presentScene(topScene, transition: fadeTransition)
             }
