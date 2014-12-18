@@ -27,10 +27,27 @@ class GameScene: SKScene {
             ud.setObject("MARIKO", forKey: "bottomGirl")
             ud.setObject("", forKey: "touchedName")
         }
-        self.addIntro()
-        self.addStartBtn()
+        
+        if(ud.objectForKey("counter") == nil){
+            ud.setObject(1, forKey: "counter")
+        }else{
+            ud.setObject(2, forKey: "counter")
+        }
+        
+        if(ud.objectForKey("counter") as Int == 1){
+            //最初に出すチュートリアル画面
+            self.addIntro()
+            self.addStartBtn()
+        }else{
+            //2回目の起動時
+            self.move()
+        }
     }
     
+    func move(){
+        var topScene:TopScene = TopScene(size:self.size)
+        self.view?.presentScene(topScene)
+    }
     func addStartBtn(){
         let startBtn = SKLabelNode(fontNamed: "ShinGoPro-Medium")
         startBtn.text = "はじめる"
