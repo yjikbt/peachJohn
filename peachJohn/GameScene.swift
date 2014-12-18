@@ -21,13 +21,12 @@ class GameScene: SKScene {
         
         let ud = NSUserDefaults.standardUserDefaults()
         //名前のデータがないときに初期データをセット
-        if ((ud.objectForKey("topGirl") != nil) || (ud.objectForKey("centerGirl") != nil) || (ud.objectForKey("bottomGirl")) != nil){
-            ud.setObject("topGirl", forKey: "AYA")
-            ud.setObject("centerGirl", forKey: "YURI")
-            ud.setObject("bottomGirl", forKey: "MARIKO")
-            ud.setObject("touchedName", forKey: "")
+        if ((ud.objectForKey("topGirl") == nil) || (ud.objectForKey("centerGirl") == nil) || (ud.objectForKey("bottomGirl")) == nil){
+            ud.setObject("AYA", forKey: "topGirl")
+            ud.setObject("YURI", forKey: "centerGirl")
+            ud.setObject("MARIKO", forKey: "bottomGirl")
+            ud.setObject("", forKey: "touchedName")
         }
-        
         self.addIntro()
         self.addStartBtn()
     }

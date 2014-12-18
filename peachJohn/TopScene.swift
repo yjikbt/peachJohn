@@ -31,6 +31,8 @@ class TopScene: SKScene {
     let sw = UIScreen.mainScreen().bounds.size.width
     let sh = UIScreen.mainScreen().bounds.size.height
     
+    let ud = NSUserDefaults.standardUserDefaults()
+    
     override func didMoveToView(view: SKView) {
         //背景
         self.backgroundColor = UIColor.hexStr("ffffff", alpha: 1.0)
@@ -65,11 +67,11 @@ class TopScene: SKScene {
             var girlNameBtn = SKLabelNode(fontNamed:"DINAlternate-Bold")
             //ユーザデフォルトから名前を取得
             if(i == 0){
-                girlNameBtn.text = String(figUD.topGirl.get() as String)
+                girlNameBtn.text = ud.objectForKey("topGirl") as String
             }else if(i == 1){
-                girlNameBtn.text = String(figUD.centerGirl.get() as String)
+                girlNameBtn.text = ud.objectForKey("centerGirl") as String
             }else if(i == 2){
-                girlNameBtn.text = String(figUD.bottomGirl.get() as String)
+                girlNameBtn.text = ud.objectForKey("bottomGirl") as String
             }
             
             girlNameBtn.name = "girlName" + String(i)
@@ -218,7 +220,9 @@ class TopScene: SKScene {
         let transitionImagineScene:SKAction = SKAction.runBlock({
             //ユーザデフォルト更新
             let nameLabelText = self.touchedGirlNameBtn as SKLabelNode
-            figUD.touchedName.set(nameLabelText.text)
+            let ud = NSUserDefaults.standardUserDefaults()
+            ud.setObject(nameLabelText.text, forKey: "touchedName")
+            
             //妄想シーンに移動
             let fadeTransition:SKTransition = SKTransition.fadeWithColor(SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0), duration: 1.0)
             var imagineScene:ImagineScene = ImagineScene(size:self.size)
@@ -301,11 +305,11 @@ class TopScene: SKScene {
                                 //ユーザデフォルトを更新
                                 switch indexStr {
                                     case "0":
-                                        figUD.topGirl.set(textField.text)
+                                        self.ud.setObject(textField.text, forKey: "topGirl")
                                     case "1":
-                                        figUD.centerGirl.set(textField.text)
+                                        self.ud.setObject(textField.text, forKey: "centerGirl")
                                     case "2":
-                                        figUD.bottomGirl.set(textField.text)
+                                        self.ud.setObject(textField.text, forKey: "bottomGirl")
                                     default:
                                         break
                                 }

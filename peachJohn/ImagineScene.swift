@@ -11,6 +11,7 @@ import SpriteKit
 class ImagineScene: SKScene {
     //効果音再生用SKActin
     var bgSoundAction:SKAction!
+    let ud = NSUserDefaults.standardUserDefaults()
     override func didMoveToView(view: SKView) {
         //背景
         self.backgroundColor = SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0)
@@ -31,7 +32,7 @@ class ImagineScene: SKScene {
     func addGirlName(){
         //女の子の名前をセット
         let girlLabelName = SKLabelNode(fontNamed:"DINAlternate-Bold")
-        girlLabelName.text = figUD.touchedName.get() as String
+        girlLabelName.text = ud.objectForKey("touchedName") as String
         girlLabelName.fontSize = 50
         girlLabelName.fontColor = SKColor(red: 0.28, green: 0.28, blue: 0.28, alpha: 1.0)
         girlLabelName.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
