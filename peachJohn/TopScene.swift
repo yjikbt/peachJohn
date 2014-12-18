@@ -42,7 +42,7 @@ class TopScene: SKScene {
         addSettingBtn()
         
         //infoボタンをセット
-        addInfoBtn()
+//        addInfoBtn()
         //名前をセット
         addGirlName()
         

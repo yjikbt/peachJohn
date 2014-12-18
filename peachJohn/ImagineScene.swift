@@ -11,13 +11,10 @@ import SpriteKit
 class ImagineScene: SKScene {
     //効果音再生用SKActin
     var bgSoundAction:SKAction!
-    let ud = NSUserDefaults.standardUserDefaults()
     override func didMoveToView(view: SKView) {
         //背景
         self.backgroundColor = SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0)
         self.scaleMode = SKSceneScaleMode.AspectFill
-        
-        var pantyColor = SKColor(red: 0, green: 0, blue: 0, alpha: 1.0)
         
         // 効果音
         bgSoundAction = SKAction.playSoundFileNamed("bird.mp3", waitForCompletion: false)
@@ -31,6 +28,7 @@ class ImagineScene: SKScene {
    
     func addGirlName(){
         //女の子の名前をセット
+        let ud = NSUserDefaults.standardUserDefaults()
         let girlLabelName = SKLabelNode(fontNamed:"DINAlternate-Bold")
         girlLabelName.text = ud.objectForKey("touchedName") as String
         girlLabelName.fontSize = 50
@@ -57,7 +55,7 @@ class ImagineScene: SKScene {
         let SCREEN_HEIGHT = self.frame.size.height
         let moveDuration = 6.0
         let fadeOutDuration = 5.0
-        let fadeTransitionDuration = 5.5
+        let fadeTransitionDuration = 4.5
         
         //背景を設置
         let bg = SKSpriteNode(color:pantyColor,size:CGSizeMake(SCREEN_WIDTH,SCREEN_HEIGHT))
