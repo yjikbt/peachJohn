@@ -25,29 +25,32 @@ class TopScene: SKScene {
     var popSoundAction:SKAction!
     var settingOnSoundAction:SKAction!
     var settingOffSoundAction:SKAction!
+    var infoOnSoundAction:SKAction!
     var audioPlayer = AVAudioPlayer()
+    //画面サイズ
+    let sw = UIScreen.mainScreen().bounds.size.width
+    let sh = UIScreen.mainScreen().bounds.size.height
+    
+    let ud = NSUserDefaults.standardUserDefaults()
     
     override func didMoveToView(view: SKView) {
         //背景
-        self.backgroundColor = UIColor.hexStr("fc7050", alpha: 1.0)
+        self.backgroundColor = UIColor.hexStr("ffffff", alpha: 1.0)
         self.scaleMode = SKSceneScaleMode.AspectFill
-        
-        //ユーザデフォルト
-        let ud = NSUserDefaults.standardUserDefaults()
-        var girlNameArray = ud.arrayForKey("girlNameArray")
         
         //設定ボタンをセット
         addSettingBtn()
         
         //infoボタンをセット
-        addInfoBtn()
+//        addInfoBtn()
         //名前をセット
-        addGirlName(girlNameArray!)
+        addGirlName()
         
         // 効果音
         popSoundAction = SKAction.playSoundFileNamed("pop.mp3", waitForCompletion: false)
         settingOnSoundAction = SKAction.playSoundFileNamed("settingOn.wav", waitForCompletion: false)
         settingOffSoundAction = SKAction.playSoundFileNamed("settingOff.wav", waitForCompletion: false)
+        infoOnSoundAction = SKAction.playSoundFileNamed("InfoOn.wav", waitForCompletion: false)
         
         //途中で停止するかもしれない効果音
         var alertSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("drum", ofType: "wav")!)
@@ -58,12 +61,19 @@ class TopScene: SKScene {
         audioPlayer.prepareToPlay()
     }
     
-    func addGirlName(girlNameArray:NSArray){
+    func addGirlName(){
         for var i = 0; i < 3; i++ {
             var cnt:CGFloat = CGFloat(3 - i)
             var girlNameBtn = SKLabelNode(fontNamed:"DINAlternate-Bold")
             //ユーザデフォルトから名前を取得
-            girlNameBtn.text = String(girlNameArray[i] as NSString)
+            if(i == 0){
+                girlNameBtn.text = ud.objectForKey("topGirl") as String
+            }else if(i == 1){
+                girlNameBtn.text = ud.objectForKey("centerGirl") as String
+            }else if(i == 2){
+                girlNameBtn.text = ud.objectForKey("bottomGirl") as String
+            }
+            
             girlNameBtn.name = "girlName" + String(i)
             girlNameBtn.fontSize = 50
             girlNameBtn.fontColor = SKColor(red: 0.28, green: 0.28, blue: 0.28, alpha: 1.0)
@@ -82,22 +92,18 @@ class TopScene: SKScene {
     }
     
     func addInfoBtn(){
-        let infoBtn = SKSpriteNode(imageNamed: "cat114")
+        let infoBtn = SKSpriteNode(imageNamed: "info")
         infoBtn.size = CGSizeMake(40, 40)
-        infoBtn.position = CGPoint(x:350, y:50)
-        println(infoBtn.position)
+        infoBtn.position = CGPoint(x:infoBtn.size.width, y:50)
         infoBtn.name = "infoBtn"
-        
         self.addChild(infoBtn)
     }
     
     func addSettingBtn(){
         settingBtn = SKSpriteNode(imageNamed: "haguruma")
         settingBtn.size = CGSizeMake(150, 150)
-        settingBtn.position = CGPoint(x:CGRectGetMaxY(self.frame) - 50, y:CGRectGetMaxY(self.frame) - 0);
-        println(settingBtn.position)
+        settingBtn.position = CGPoint(x:sw, y:sh);
         settingBtn.name = "settingBtn"
-        
         self.addChild(settingBtn)
     }
     
@@ -110,12 +116,12 @@ class TopScene: SKScene {
             for node in self.children{
                 //名前ノードを判定
                 if node.name == "girlName0" || node.name == "girlName1" || node.name == "girlName2"{
-                    let horizontal:SKAction = SKAction.rotateToAngle(0, duration: 0.3)
+                    //元の大きさに戻す
+                    let unscale:SKAction = SKAction.scaleTo(1.0, duration: 0.8)
                     node.removeAllActions()
-                    //水平に戻す
-                    horizontal.timingMode = SKActionTimingMode.EaseOut
+                    unscale.timingMode = SKActionTimingMode.EaseOut
                     //アクション実行
-                    node.runAction(horizontal)
+                    node.runAction(unscale)
                 }
             }
         }else{//設定開始
@@ -129,18 +135,11 @@ class TopScene: SKScene {
             //効果音
             settingBtn.runAction(settingOnSoundAction)
             
-            //回転角度
-            let angle:CGFloat = 0.05
-            //回転時間間隔
-            let rotateDuration:NSTimeInterval = 0.8
+            let scale:SKAction = SKAction.scaleTo(1.15, duration: 0.8)
+            let unscale:SKAction = SKAction.scaleTo(1.0, duration: 0.8)
+            let scaleSeq:SKAction = SKAction.sequence([scale,unscale])
             
-            //時計回り
-            let clockwise:SKAction = SKAction.rotateToAngle(-angle, duration: rotateDuration)
-            //反時計回り
-            let counterClockwise:SKAction = SKAction.rotateToAngle(angle, duration: rotateDuration)
-            let rotateSeq:SKAction = SKAction.sequence([clockwise,counterClockwise])
-            
-            let loop2:SKAction = SKAction.repeatActionForever(rotateSeq)
+            let loop2:SKAction = SKAction.repeatActionForever(scaleSeq)
             
             //すべてのノードを探索
             for node in self.children{
@@ -157,8 +156,8 @@ class TopScene: SKScene {
     func popActions(){
         if(isMoving){
             //ポップアニメーション
-            let scale:SKAction = SKAction.scaleTo(1.1, duration: 0.1)
-            let unscale:SKAction = SKAction.scaleTo(1.0, duration: 0.1)
+            let scale:SKAction = SKAction.scaleTo(1.25, duration: 0.15)
+            let unscale:SKAction = SKAction.scaleTo(1.0, duration: 0.15)
             let wait:SKAction = SKAction.waitForDuration(0.2)
             let startEnlarging:SKAction = SKAction.runBlock( {
                 //クロージャ?だからselfをつけないと怒られる
@@ -220,9 +219,10 @@ class TopScene: SKScene {
         let dimming:SKAction = SKAction.colorizeWithColor(SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0), colorBlendFactor: 1.0, duration: 1.0)
         let transitionImagineScene:SKAction = SKAction.runBlock({
             //ユーザデフォルト更新
-            let ud = NSUserDefaults.standardUserDefaults()
             let nameLabelText = self.touchedGirlNameBtn as SKLabelNode
+            let ud = NSUserDefaults.standardUserDefaults()
             ud.setObject(nameLabelText.text, forKey: "touchedName")
+            
             //妄想シーンに移動
             let fadeTransition:SKTransition = SKTransition.fadeWithColor(SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0), duration: 1.0)
             var imagineScene:ImagineScene = ImagineScene(size:self.size)
@@ -246,7 +246,6 @@ class TopScene: SKScene {
     
     func soundFadeOut(){
         while(audioPlayer.volume > 0.08){
-            println(audioPlayer.volume)
             audioPlayer.volume = audioPlayer.volume - 0.01
         }
     }
@@ -303,25 +302,17 @@ class TopScene: SKScene {
                         
                         if textFields != nil{
                             for textField:UITextField in textFields!{
-                                //女の子の名前を更新
                                 //ユーザデフォルトを更新
-                                let ud = NSUserDefaults.standardUserDefaults()
-                                var array:[String] = ud.objectForKey("girlNameArray") as [String]!
-                                
                                 switch indexStr {
                                     case "0":
-                                        array[0] = textField.text
+                                        self.ud.setObject(textField.text, forKey: "topGirl")
                                     case "1":
-                                        array[1] = textField.text
+                                        self.ud.setObject(textField.text, forKey: "centerGirl")
                                     case "2":
-                                        array[2] = textField.text
+                                        self.ud.setObject(textField.text, forKey: "bottomGirl")
                                     default:
                                         break
                                 }
-                                
-                                //更新
-                                ud.setObject(array, forKey: "girlNameArray")
-                                ud.synchronize()
                                 
                                 //表示中の名前を更新
                                 girlNameBtn.text = textField.text
@@ -338,7 +329,6 @@ class TopScene: SKScene {
                     handler:{
                         (aciton:UIAlertAction!) -> Void in
                         //cancel押したときの処理
-                        
                 })
                 
                 //根元にあるview
@@ -357,13 +347,12 @@ class TopScene: SKScene {
                 //alertを表示
                 currentViewController?.presentViewController(alertController, animated: true, completion: nil)
                 
-            }else if(touchedNode.name == "settingBtn"){
-                switchSetting()
-                
             }else if(touchedNode.name == "infoBtn"){
                 //infoシーンに移動
                 let revealTransition:SKTransition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 0.5)
                 var infoScene:InfoScene = InfoScene(size:self.size)
+                
+                touchedNode.runAction(infoOnSoundAction)
                 
                 self.view?.presentScene(infoScene, transition: revealTransition)
             }
@@ -398,6 +387,10 @@ class TopScene: SKScene {
                     //フェードアウトして消滅
                     node.runAction(fadeIn)
                 }
+            }
+            
+            if(touchedNode.name == "settingBtn"){
+                switchSetting()
             }
         }
     }

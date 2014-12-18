@@ -34,6 +34,8 @@ class GameViewController: UIViewController {
             let skView = self.view as SKView
             skView.ignoresSiblingOrder = true
             scene.scaleMode = .AspectFill
+            //SKSceneとviewのサイズを合わせる
+            scene.size = skView.frame.size
             skView.presentScene(scene)
         }
     }
