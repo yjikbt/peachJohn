@@ -67,11 +67,11 @@ class TopScene: SKScene {
             var girlNameBtn = SKLabelNode(fontNamed:"DINAlternate-Bold")
             //ユーザデフォルトから名前を取得
             if(i == 0){
-                girlNameBtn.text = ud.objectForKey("topGirl") as String
+                girlNameBtn.text = ud.objectForKey("topGirl") as! String
             }else if(i == 1){
-                girlNameBtn.text = ud.objectForKey("centerGirl") as String
+                girlNameBtn.text = ud.objectForKey("centerGirl") as! String
             }else if(i == 2){
-                girlNameBtn.text = ud.objectForKey("bottomGirl") as String
+                girlNameBtn.text = ud.objectForKey("bottomGirl") as! String
             }
             
             girlNameBtn.name = "girlName" + String(i)
@@ -219,7 +219,7 @@ class TopScene: SKScene {
         let dimming:SKAction = SKAction.colorizeWithColor(SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0), colorBlendFactor: 1.0, duration: 1.0)
         let transitionImagineScene:SKAction = SKAction.runBlock({
             //ユーザデフォルト更新
-            let nameLabelText = self.touchedGirlNameBtn as SKLabelNode
+            let nameLabelText = self.touchedGirlNameBtn as! SKLabelNode
             let ud = NSUserDefaults.standardUserDefaults()
             ud.setObject(nameLabelText.text, forKey: "touchedName")
             
@@ -262,11 +262,14 @@ class TopScene: SKScene {
         touchedGirlNameBg.runAction(bgAction)
         
     }
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+    
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         //タッチ開始
         isTouching = true
+        
+        println("began")
         //タッチする指の本数は任意
-        for touch: AnyObject in touches {
+        for touch in (touches as! Set<UITouch>) {
             let location = touch.locationInNode(self)
             let touchedNode = self.nodeAtPoint(location)
             
@@ -276,10 +279,10 @@ class TopScene: SKScene {
                 //タッチした背景から、内包する名前のノードを取得
                 var indexStr:String!
                 indexStr = touchedNode.name?.componentsSeparatedByString("girlNameRect")[1]
-                var girlNameBtn: SKLabelNode = childNodeWithName("girlName" + indexStr) as SKLabelNode
+                var girlNameBtn: SKLabelNode = childNodeWithName("girlName" + indexStr) as! SKLabelNode
                 
                 //ボタンの背景
-                touchedGirlNameBg = touchedNode as SKSpriteNode
+                touchedGirlNameBg = touchedNode as! SKSpriteNode
                 touchedGirlNameBtn = girlNameBtn
                 
                 //名前に対してアクション実行
@@ -288,7 +291,7 @@ class TopScene: SKScene {
                 //タッチした背景から、内包する名前のノードを取得
                 var indexStr:String!
                 indexStr = touchedNode.name?.componentsSeparatedByString("girlNameRect")[1]
-                var girlNameBtn: SKLabelNode = childNodeWithName("girlName" + indexStr) as SKLabelNode
+                var girlNameBtn: SKLabelNode = childNodeWithName("girlName" + indexStr) as! SKLabelNode
                 
                 //alertコントローラ
                 var alertController:UIAlertController = UIAlertController(title: girlNameBtn.text + "を編集中", message: "新しい女の子の名前を入力して下さい", preferredStyle: UIAlertControllerStyle.Alert)
@@ -298,7 +301,7 @@ class TopScene: SKScene {
                     handler:{
                         (aciton:UIAlertAction!) -> Void in
                         //ok押したときの処理
-                        let textFields:[UITextField]? = alertController.textFields as [UITextField]?
+                        let textFields:[UITextField]? = alertController.textFields as! [UITextField]?
                         
                         if textFields != nil{
                             for textField:UITextField in textFields!{
@@ -360,11 +363,13 @@ class TopScene: SKScene {
         }
     }
     
-    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         //タッチ終了
         isTouching = false
+        println("cancel")
         
-        for touch: AnyObject in touches {
+        for touch in (touches as! Set<UITouch>) {
+//        for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
             let touchedNode = self.nodeAtPoint(location)
             
@@ -400,7 +405,7 @@ class TopScene: SKScene {
             var cnt:CGFloat = CGFloat(3 - i)
             //ゆらぎパラメータ
             var parameter:CGFloat = sin(CGFloat(currentTime) + 30 * CGFloat(i)) / 10
-            var girlNameBtn: SKLabelNode = childNodeWithName("girlName" + String(i)) as SKLabelNode
+            var girlNameBtn: SKLabelNode = childNodeWithName("girlName" + String(i)) as! SKLabelNode
             
             //X軸方向にゆらぎ
             girlNameBtn.position.x += parameter

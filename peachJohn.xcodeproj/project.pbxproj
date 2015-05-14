@@ -24,7 +24,6 @@
 		9A62CBC71A3F1F050056C8E9 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A62CBC61A3F1F050056C8E9 /* info.png */; };
 		9A63ACEB1A102C800038153B /* ImagineScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A63ACEA1A102C800038153B /* ImagineScene.swift */; };
 		9A66567C1A3FA8D90015B378 /* desc.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A66567B1A3FA8D90015B378 /* desc.png */; };
-		9A66567E1A3FAE880015B378 /* intro.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A66567D1A3FAE880015B378 /* intro.png */; };
 		9AB684A01A3C44360012C89C /* drum.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9AB6849F1A3C44360012C89C /* drum.wav */; };
 		9AB684A21A3C49200012C89C /* settingOn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9AB684A11A3C49200012C89C /* settingOn.wav */; };
 		9AB684A41A3C49270012C89C /* settingOff.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9AB684A31A3C49270012C89C /* settingOff.wav */; };
@@ -65,7 +64,6 @@
 		9A62CBC61A3F1F050056C8E9 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info.png; sourceTree = "<group>"; };
 		9A63ACEA1A102C800038153B /* ImagineScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineScene.swift; sourceTree = "<group>"; };
 		9A66567B1A3FA8D90015B378 /* desc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = desc.png; sourceTree = "<group>"; };
-		9A66567D1A3FAE880015B378 /* intro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = intro.png; sourceTree = "<group>"; };
 		9A985FBD1A2E850500B3A2D5 /* Franklin Gothic Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Franklin Gothic Medium.ttf"; sourceTree = "<group>"; };
 		9AB6849F1A3C44360012C89C /* drum.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = drum.wav; sourceTree = "<group>"; };
 		9AB684A11A3C49200012C89C /* settingOn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = settingOn.wav; sourceTree = "<group>"; };
@@ -115,7 +113,6 @@
 		1151CA6619E4235300750B7C /* peachJohn */ = {
 			isa = PBXGroup;
 			children = (
-				9A66567D1A3FAE880015B378 /* intro.png */,
 				9A985FBB1A2E844700B3A2D5 /* font */,
 				9A6EB09B1A1D694E00527ACB /* sound */,
 				9AB684A91A3C7C2C0012C89C /* haguruma.png */,
@@ -281,7 +278,6 @@
 				9A62CBC71A3F1F050056C8E9 /* info.png in Resources */,
 				9A66567C1A3FA8D90015B378 /* desc.png in Resources */,
 				1151CA7319E4235300750B7C /* Main.storyboard in Resources */,
-				9A66567E1A3FAE880015B378 /* intro.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,6 +430,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Naoya Sugimoto (5JW3B2ZP2Q)";
 				INFOPLIST_FILE = peachJohn/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "cbb357a2-4a80-40dc-9c73-fbba5b1c066b";
@@ -446,6 +443,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Naoya Sugimoto (5JW3B2ZP2Q)";
 				INFOPLIST_FILE = peachJohn/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "cbb357a2-4a80-40dc-9c73-fbba5b1c066b";
