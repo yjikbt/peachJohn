@@ -30,7 +30,7 @@ class ImagineScene: SKScene {
         //女の子の名前をセット
         let ud = NSUserDefaults.standardUserDefaults()
         let girlLabelName = SKLabelNode(fontNamed:"DINAlternate-Bold")
-        girlLabelName.text = ud.objectForKey("touchedName") as String
+        girlLabelName.text = ud.objectForKey("touchedName") as! String
         girlLabelName.fontSize = 50
         girlLabelName.fontColor = SKColor(red: 0.28, green: 0.28, blue: 0.28, alpha: 1.0)
         girlLabelName.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))

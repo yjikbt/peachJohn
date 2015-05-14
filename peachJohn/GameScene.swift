@@ -34,10 +34,9 @@ class GameScene: SKScene {
             ud.setObject(2, forKey: "counter")
         }
         
-        if(ud.objectForKey("counter") as Int == 1){
+        if(ud.objectForKey("counter") as! Int == 1){
             //最初に出すチュートリアル画面
             self.addIntro()
-            self.addStartBtn()
         }else{
             //2回目の起動時
             self.move()
@@ -48,40 +47,28 @@ class GameScene: SKScene {
         var topScene:TopScene = TopScene(size:self.size)
         self.view?.presentScene(topScene)
     }
-    func addStartBtn(){
-        let startBtn = SKLabelNode(fontNamed: "ShinGoPro-Medium")
-        startBtn.text = "はじめる"
-        startBtn.name = "startBtn"
-        startBtn.fontSize = 40
-        startBtn.fontColor = UIColor.hexStr(blue, alpha: 1.0)
-        startBtn.position = CGPoint(x:sw * 0.55, y:startBtn.frame.size.height * 4)
-        
-        self.addChild(startBtn)
-    }
     
     func addIntro(){
         let intro = SKSpriteNode(imageNamed: "intro")
         intro.size = CGSizeMake(sw, sh)
         intro.position = CGPoint(x:sw / 2,y:sh / 2)
+        
         self.addChild(intro)
     }
     
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        
-        for touch: AnyObject in touches {
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    
+        for touch in (touches as! Set<UITouch>) {
             let location = touch.locationInNode(self)
             let node = self.nodeAtPoint(location)
             
-            //スタートボタンをタッチ
-            if node.name == "startBtn"{
-                //トップページに遷移
-                let fadeTransition:SKTransition = SKTransition.fadeWithColor(SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0), duration: 4.0)
-                var topScene:TopScene = TopScene(size:self.size)
-                // 効果音
-                bgSoundAction = SKAction.playSoundFileNamed("bird.mp3", waitForCompletion: false)
-                self.runAction(bgSoundAction)
-                self.view?.presentScene(topScene, transition: fadeTransition)
-            }
+            //画面のどこかをタッチ
+            let fadeTransition:SKTransition = SKTransition.fadeWithColor(SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0), duration: 4.0)
+            var topScene:TopScene = TopScene(size:self.size)
+            // 効果音
+            bgSoundAction = SKAction.playSoundFileNamed("bird.mp3", waitForCompletion: false)
+            self.runAction(bgSoundAction)
+            self.view?.presentScene(topScene, transition: fadeTransition)
         }
     }
 }
