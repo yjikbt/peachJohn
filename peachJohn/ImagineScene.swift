@@ -20,7 +20,7 @@ class ImagineScene: SKScene {
         bgSoundAction = SKAction.playSoundFileNamed("bird.mp3", waitForCompletion: false)
         
         //モデルからインスタンスを生成
-        var panty:pantyColorModel = pantyColorModel()
+        let panty:pantyColorModel = pantyColorModel()
         
         addGirlName()
         addBackground(panty.getBgColor())
@@ -73,7 +73,7 @@ class ImagineScene: SKScene {
         
         //ホームへ遷移
         let transitionAnimation:SKAction = SKAction.runBlock({
-            var topScene:TopScene = TopScene(size:self.size)
+            let topScene:TopScene = TopScene(size:self.size)
             topScene.scaleMode = SKSceneScaleMode.AspectFill
             let fadeTransition:SKTransition = SKTransition.fadeWithColor(SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0), duration: fadeTransitionDuration)
             

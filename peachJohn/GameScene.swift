@@ -44,7 +44,7 @@ class GameScene: SKScene {
     }
     
     func move(){
-        var topScene:TopScene = TopScene(size:self.size)
+        let topScene:TopScene = TopScene(size:self.size)
         self.view?.presentScene(topScene)
     }
     
@@ -56,19 +56,14 @@ class GameScene: SKScene {
         self.addChild(intro)
     }
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
     
-        for touch in (touches as! Set<UITouch>) {
-            let location = touch.locationInNode(self)
-            let node = self.nodeAtPoint(location)
-            
-            //画面のどこかをタッチ
-            let fadeTransition:SKTransition = SKTransition.fadeWithColor(SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0), duration: 4.0)
-            var topScene:TopScene = TopScene(size:self.size)
-            // 効果音
-            bgSoundAction = SKAction.playSoundFileNamed("bird.mp3", waitForCompletion: false)
-            self.runAction(bgSoundAction)
-            self.view?.presentScene(topScene, transition: fadeTransition)
-        }
+        //画面のどこかをタッチ
+        let fadeTransition:SKTransition = SKTransition.fadeWithColor(SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0), duration: 4.0)
+        let topScene:TopScene = TopScene(size:self.size)
+        // 効果音
+        bgSoundAction = SKAction.playSoundFileNamed("bird.mp3", waitForCompletion: false)
+        self.runAction(bgSoundAction)
+        self.view?.presentScene(topScene, transition: fadeTransition)
     }
 }

@@ -55,7 +55,12 @@ class TopScene: SKScene {
         //途中で停止するかもしれない効果音
         var alertSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("drum", ofType: "wav")!)
         var error:NSError?
-        audioPlayer = AVAudioPlayer(contentsOfURL: alertSound, error: &error)
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOfURL: alertSound)
+        } catch var error1 as NSError {
+            error = error1
+//            audioPlayer = nil
+        }
         //リピート再生
         audioPlayer.numberOfLoops = -1
         audioPlayer.prepareToPlay()
@@ -63,8 +68,8 @@ class TopScene: SKScene {
     
     func addGirlName(){
         for var i = 0; i < 3; i++ {
-            var cnt:CGFloat = CGFloat(3 - i)
-            var girlNameBtn = SKLabelNode(fontNamed:"DINAlternate-Bold")
+            let cnt:CGFloat = CGFloat(3 - i)
+            let girlNameBtn = SKLabelNode(fontNamed:"DINAlternate-Bold")
             //ユーザデフォルトから名前を取得
             if(i == 0){
                 girlNameBtn.text = ud.objectForKey("topGirl") as! String
@@ -82,7 +87,7 @@ class TopScene: SKScene {
             self.addChild(girlNameBtn)
             
             //名前の背景
-            var girlNameRect:SKSpriteNode = SKSpriteNode(color: self.backgroundColor,size: CGSizeMake(self.frame.size.width, girlNameBtn.fontSize * 3))
+            let girlNameRect:SKSpriteNode = SKSpriteNode(color: self.backgroundColor,size: CGSizeMake(self.frame.size.width, girlNameBtn.fontSize * 3))
             //文字が背景の中央になるように位置を調整
             girlNameRect.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame) * 0.5 * cnt + girlNameBtn.fontSize / 3)
             girlNameRect.name = "girlNameRect" + String(i)
@@ -225,7 +230,7 @@ class TopScene: SKScene {
             
             //妄想シーンに移動
             let fadeTransition:SKTransition = SKTransition.fadeWithColor(SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0), duration: 1.0)
-            var imagineScene:ImagineScene = ImagineScene(size:self.size)
+            let imagineScene:ImagineScene = ImagineScene(size:self.size)
             
             //サウンド停止
             self.audioPlayer.stop()
@@ -263,13 +268,13 @@ class TopScene: SKScene {
         
     }
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         //タッチ開始
         isTouching = true
         
-        println("began")
+        print("began")
         //タッチする指の本数は任意
-        for touch in (touches as! Set<UITouch>) {
+        for touch in (touches ) {
             let location = touch.locationInNode(self)
             let touchedNode = self.nodeAtPoint(location)
             
@@ -294,14 +299,14 @@ class TopScene: SKScene {
                 var girlNameBtn: SKLabelNode = childNodeWithName("girlName" + indexStr) as! SKLabelNode
                 
                 //alertコントローラ
-                var alertController:UIAlertController = UIAlertController(title: girlNameBtn.text + "を編集中", message: "新しい女の子の名前を入力して下さい", preferredStyle: UIAlertControllerStyle.Alert)
+                var alertController:UIAlertController = UIAlertController(title: girlNameBtn.text! + "を編集中", message: "新しい女の子の名前を入力して下さい", preferredStyle: UIAlertControllerStyle.Alert)
                 
                 let okAction = UIAlertAction(title: "OK",
                     style: .Default,
                     handler:{
-                        (aciton:UIAlertAction!) -> Void in
+                        (aciton:UIAlertAction) -> Void in
                         //ok押したときの処理
-                        let textFields:[UITextField]? = alertController.textFields as! [UITextField]?
+                        let textFields:[UITextField]? = alertController.textFields 
                         
                         if textFields != nil{
                             for textField:UITextField in textFields!{
@@ -330,7 +335,7 @@ class TopScene: SKScene {
                 let cancelAction = UIAlertAction(title: "cancel",
                     style: .Default,
                     handler:{
-                        (aciton:UIAlertAction!) -> Void in
+                        (aciton:UIAlertAction) -> Void in
                         //cancel押したときの処理
                 })
                 
@@ -342,7 +347,7 @@ class TopScene: SKScene {
                 alertController.addAction(okAction)
                 
                 //text field追加
-                alertController.addTextFieldWithConfigurationHandler({(text:UITextField!) -> Void in
+                alertController.addTextFieldWithConfigurationHandler({(text:UITextField) -> Void in
                     text.placeholder = "ここに名前を入力"
                 })
                 
@@ -363,12 +368,12 @@ class TopScene: SKScene {
         }
     }
     
-    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         //タッチ終了
         isTouching = false
-        println("cancel")
+        print("cancel")
         
-        for touch in (touches as! Set<UITouch>) {
+        for touch in (touches ) {
 //        for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
             let touchedNode = self.nodeAtPoint(location)
@@ -404,8 +409,8 @@ class TopScene: SKScene {
         for var i = 0; i < 3; i++ {
             var cnt:CGFloat = CGFloat(3 - i)
             //ゆらぎパラメータ
-            var parameter:CGFloat = sin(CGFloat(currentTime) + 30 * CGFloat(i)) / 10
-            var girlNameBtn: SKLabelNode = childNodeWithName("girlName" + String(i)) as! SKLabelNode
+            let parameter:CGFloat = sin(CGFloat(currentTime) + 30 * CGFloat(i)) / 10
+            let girlNameBtn: SKLabelNode = childNodeWithName("girlName" + String(i)) as! SKLabelNode
             
             //X軸方向にゆらぎ
             girlNameBtn.position.x += parameter

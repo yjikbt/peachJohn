@@ -31,6 +31,7 @@
 		9AB684AA1A3C7C2C0012C89C /* haguruma.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB684A91A3C7C2C0012C89C /* haguruma.png */; };
 		9AB684AE1A3C7FF40012C89C /* pop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9AB684AD1A3C7FF40012C89C /* pop.mp3 */; };
 		9AE943551A0F9B4F004AC409 /* TopScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE943541A0F9B4F004AC409 /* TopScene.swift */; };
+		EF54CACF734F49DA4FCA450A /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55586D7B67D1D14FFF180589 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		1151CA7D19E4235300750B7C /* peachJohnTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = peachJohnTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1151CA8219E4235300750B7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1151CA8319E4235300750B7C /* peachJohnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = peachJohnTests.swift; sourceTree = "<group>"; };
+		55586D7B67D1D14FFF180589 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		58420E112EB282D0096391A2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		9A0587DA1A41B1D700A00A86 /* InfoOff.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = InfoOff.wav; sourceTree = "<group>"; };
 		9A0587DB1A41B1D700A00A86 /* InfoOn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = InfoOn.wav; sourceTree = "<group>"; };
 		9A5B6DC31A1574E600C890CE /* InfoScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoScene.swift; sourceTree = "<group>"; };
@@ -72,6 +75,7 @@
 		9AB684A91A3C7C2C0012C89C /* haguruma.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haguruma.png; sourceTree = "<group>"; };
 		9AB684AD1A3C7FF40012C89C /* pop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pop.mp3; sourceTree = "<group>"; };
 		9AE943541A0F9B4F004AC409 /* TopScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopScene.swift; sourceTree = "<group>"; };
+		DC3EF747B886BA010C71E527 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF54CACF734F49DA4FCA450A /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +103,8 @@
 				1151CA6619E4235300750B7C /* peachJohn */,
 				1151CA8019E4235300750B7C /* peachJohnTests */,
 				1151CA6519E4235300750B7C /* Products */,
+				49C34BD381F2560ADA120470 /* Pods */,
+				E8A80F62CA07DDE3A1E52ECD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -159,6 +166,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		49C34BD381F2560ADA120470 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DC3EF747B886BA010C71E527 /* Pods.debug.xcconfig */,
+				58420E112EB282D0096391A2 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		9A6EB09B1A1D694E00527ACB /* sound */ = {
 			isa = PBXGroup;
 			children = (
@@ -182,6 +198,14 @@
 			name = font;
 			sourceTree = "<group>";
 		};
+		E8A80F62CA07DDE3A1E52ECD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				55586D7B67D1D14FFF180589 /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -189,9 +213,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1151CA8719E4235300750B7C /* Build configuration list for PBXNativeTarget "peachJohn" */;
 			buildPhases = (
+				93B7A9D706F0ED73AD9D5D34 /* Check Pods Manifest.lock */,
 				1151CA6019E4235300750B7C /* Sources */,
 				1151CA6119E4235300750B7C /* Frameworks */,
 				1151CA6219E4235300750B7C /* Resources */,
+				6AED8056959B1D96116A2D40 /* Embed Pods Frameworks */,
+				0929B5D18696E33FE5C578D2 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -226,7 +253,9 @@
 		1151CA5C19E4235300750B7C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = abisetaoshi;
 				TargetAttributes = {
 					1151CA6319E4235300750B7C = {
@@ -289,6 +318,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0929B5D18696E33FE5C578D2 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6AED8056959B1D96116A2D40 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		93B7A9D706F0ED73AD9D5D34 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1151CA6019E4235300750B7C /* Sources */ = {
@@ -364,6 +441,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Naoya Sugimoto (5JW3B2ZP2Q)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -381,7 +459,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "cbb357a2-4a80-40dc-9c73-fbba5b1c066b";
+				PROVISIONING_PROFILE = "ab7bd05b-c731-4b16-85c3-537765ad3650";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -418,7 +496,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "cbb357a2-4a80-40dc-9c73-fbba5b1c066b";
+				PROVISIONING_PROFILE = "ab7bd05b-c731-4b16-85c3-537765ad3650";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -426,27 +504,31 @@
 		};
 		1151CA8819E4235300750B7C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC3EF747B886BA010C71E527 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Naoya Sugimoto (5JW3B2ZP2Q)";
 				INFOPLIST_FILE = peachJohn/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = abisetaoshi.peachJohn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cbb357a2-4a80-40dc-9c73-fbba5b1c066b";
+				PROVISIONING_PROFILE = "ab7bd05b-c731-4b16-85c3-537765ad3650";
 			};
 			name = Debug;
 		};
 		1151CA8919E4235300750B7C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 58420E112EB282D0096391A2 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Naoya Sugimoto (5JW3B2ZP2Q)";
 				INFOPLIST_FILE = peachJohn/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = abisetaoshi.peachJohn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cbb357a2-4a80-40dc-9c73-fbba5b1c066b";
+				PROVISIONING_PROFILE = "ab7bd05b-c731-4b16-85c3-537765ad3650";
 			};
 			name = Release;
 		};
@@ -464,6 +546,7 @@
 				);
 				INFOPLIST_FILE = peachJohnTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = abisetaoshi.peachJohn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/peachJohn.app/peachJohn";
 			};
@@ -479,6 +562,7 @@
 				);
 				INFOPLIST_FILE = peachJohnTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = abisetaoshi.peachJohn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/peachJohn.app/peachJohn";
 			};
