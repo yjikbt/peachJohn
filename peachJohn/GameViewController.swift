@@ -30,8 +30,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let scene = GameScene.unarchiveFromFile("GameScene") as? GameScene {
-            let skView = self.view as! SKView
+        if let scene = GameScene.unarchiveFromFile("GameScene") as? GameScene, skView = view as? SKView {
             skView.ignoresSiblingOrder = true
             scene.scaleMode = .AspectFill
             //SKSceneとviewのサイズを合わせる

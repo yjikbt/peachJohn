@@ -13,14 +13,14 @@ class ImagineScene: SKScene {
     var bgSoundAction:SKAction!
     override func didMoveToView(view: SKView) {
         //背景
-        self.backgroundColor = SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0)
-        self.scaleMode = SKSceneScaleMode.AspectFill
+        backgroundColor = SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0)
+        scaleMode = SKSceneScaleMode.AspectFill
         
         // 効果音
         bgSoundAction = SKAction.playSoundFileNamed("bird.mp3", waitForCompletion: false)
         
         //モデルからインスタンスを生成
-        let panty:pantyColorModel = pantyColorModel()
+        let panty = pantyColorModel()
         
         addGirlName()
         addBackground(panty.getBgColor())
@@ -30,7 +30,7 @@ class ImagineScene: SKScene {
         //女の子の名前をセット
         let ud = NSUserDefaults.standardUserDefaults()
         let girlLabelName = SKLabelNode(fontNamed:"DINAlternate-Bold")
-        girlLabelName.text = ud.objectForKey("touchedName") as! String
+        girlLabelName.text = ud.objectForKey("touchedName") as? String
         girlLabelName.fontSize = 50
         girlLabelName.fontColor = SKColor(red: 0.28, green: 0.28, blue: 0.28, alpha: 1.0)
         girlLabelName.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
@@ -38,21 +38,21 @@ class ImagineScene: SKScene {
         addChild(girlLabelName)
         
         //文字色を変えるアニメーション
-        let fadeInStart:SKAction = SKAction.fadeInWithDuration(1.5)
-        let fadeOut:SKAction = SKAction.fadeOutWithDuration(1.6)
-        let changeFontColor:SKAction = SKAction.runBlock(
+        let fadeInStart = SKAction.fadeInWithDuration(1.5)
+        let fadeOut = SKAction.fadeOutWithDuration(1.6)
+        let changeFontColor = SKAction.runBlock(
             {
                 girlLabelName.fontColor = SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0)
         })
-        let fadeInEnd:SKAction = SKAction.fadeInWithDuration(1.5)
+        let fadeInEnd = SKAction.fadeInWithDuration(1.5)
         
-        let changeFontColorAnimation:SKAction = SKAction.sequence([fadeInStart,fadeOut,changeFontColor,fadeInEnd])
+        let changeFontColorAnimation = SKAction.sequence([fadeInStart,fadeOut,changeFontColor,fadeInEnd])
         
         girlLabelName.runAction(changeFontColorAnimation)
     }
     func addBackground(pantyColor:UIColor){
-        let SCREEN_WIDTH = self.frame.size.width
-        let SCREEN_HEIGHT = self.frame.size.height
+        let SCREEN_WIDTH = frame.size.width
+        let SCREEN_HEIGHT = frame.size.height
         let moveDuration = 6.0
         let fadeOutDuration = 5.0
         let fadeTransitionDuration = 4.5
@@ -64,23 +64,23 @@ class ImagineScene: SKScene {
         addChild(bg)
         
         //背景がトップへ上ってくるやつ
-        let topPos:CGPoint = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
-        let moveToTop:SKAction = SKAction.moveTo(topPos,duration:moveDuration)
+        let topPos = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
+        let moveToTop = SKAction.moveTo(topPos,duration:moveDuration)
         moveToTop.timingMode = SKActionTimingMode.EaseInEaseOut
         
         //フェードアウト
-        let fadeOut:SKAction = SKAction.fadeOutWithDuration(fadeOutDuration)
+        let fadeOut = SKAction.fadeOutWithDuration(fadeOutDuration)
         
         //ホームへ遷移
-        let transitionAnimation:SKAction = SKAction.runBlock({
-            let topScene:TopScene = TopScene(size:self.size)
+        let transitionAnimation = SKAction.runBlock {
+            let topScene = TopScene(size:self.size)
             topScene.scaleMode = SKSceneScaleMode.AspectFill
-            let fadeTransition:SKTransition = SKTransition.fadeWithColor(SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0), duration: fadeTransitionDuration)
+            let fadeTransition = SKTransition.fadeWithColor(SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0), duration: fadeTransitionDuration)
             
             self.view?.presentScene(topScene, transition: fadeTransition)
-        })
+        }
         
-        let changeBackgroundAnimation:SKAction = SKAction.sequence([moveToTop,fadeOut,transitionAnimation])
+        let changeBackgroundAnimation = SKAction.sequence([moveToTop,fadeOut,transitionAnimation])
         
         //アニメーション実行
         bg.runAction(changeBackgroundAnimation)
@@ -88,4 +88,3 @@ class ImagineScene: SKScene {
         bg.runAction(bgSoundAction)
     }
 }
-
