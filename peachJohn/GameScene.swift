@@ -49,7 +49,7 @@ class GameScene: SKScene {
     }
     
     func addIntro(){
-        let intro = SKSpriteNode(imageNamed: "intro")
+        let intro = SKSpriteNode(imageNamed: "Intro")
         intro.size = CGSizeMake(sw, sh)
         intro.position = CGPoint(x:sw / 2,y:sh / 2)
         
