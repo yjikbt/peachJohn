@@ -17,58 +17,53 @@ class GameScene: SKScene {
     
     override func didMoveToView(view: SKView) {
         //背景
-        self.backgroundColor = SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0)
+        backgroundColor = SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0)
         
         let ud = NSUserDefaults.standardUserDefaults()
         //名前のデータがないときに初期データをセット
-        if ((ud.objectForKey("topGirl") == nil) || (ud.objectForKey("centerGirl") == nil) || (ud.objectForKey("bottomGirl")) == nil){
+        if ud.objectForKey("topGirl") == nil || ud.objectForKey("centerGirl") == nil || ud.objectForKey("bottomGirl") == nil {
             ud.setObject("AYA", forKey: "topGirl")
             ud.setObject("YURI", forKey: "centerGirl")
             ud.setObject("MARIKO", forKey: "bottomGirl")
             ud.setObject("", forKey: "touchedName")
         }
         
-        if(ud.objectForKey("counter") == nil){
+        if ud.objectForKey("counter") == nil {
             ud.setObject(1, forKey: "counter")
-        }else{
+        } else {
             ud.setObject(2, forKey: "counter")
         }
         
-        if(ud.objectForKey("counter") as! Int == 1){
+        if ud.objectForKey("counter") as! Int == 1 {
             //最初に出すチュートリアル画面
-            self.addIntro()
-        }else{
+            addIntro()
+        } else {
             //2回目の起動時
-            self.move()
+            move()
         }
     }
     
     func move(){
-        var topScene:TopScene = TopScene(size:self.size)
-        self.view?.presentScene(topScene)
+        let topScene = TopScene(size:self.size)
+        view?.presentScene(topScene)
     }
     
     func addIntro(){
-        let intro = SKSpriteNode(imageNamed: "intro")
+        let intro = SKSpriteNode(imageNamed: "Intro")
         intro.size = CGSizeMake(sw, sh)
         intro.position = CGPoint(x:sw / 2,y:sh / 2)
         
-        self.addChild(intro)
+        addChild(intro)
     }
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
     
-        for touch in (touches as! Set<UITouch>) {
-            let location = touch.locationInNode(self)
-            let node = self.nodeAtPoint(location)
-            
-            //画面のどこかをタッチ
-            let fadeTransition:SKTransition = SKTransition.fadeWithColor(SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0), duration: 4.0)
-            var topScene:TopScene = TopScene(size:self.size)
-            // 効果音
-            bgSoundAction = SKAction.playSoundFileNamed("bird.mp3", waitForCompletion: false)
-            self.runAction(bgSoundAction)
-            self.view?.presentScene(topScene, transition: fadeTransition)
-        }
+        //画面のどこかをタッチ
+        let fadeTransition = SKTransition.fadeWithColor(SKColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0), duration: 4.0)
+        let topScene = TopScene(size:self.size)
+        // 効果音
+        bgSoundAction = SKAction.playSoundFileNamed("bird.mp3", waitForCompletion: false)
+        runAction(bgSoundAction)
+        view?.presentScene(topScene, transition: fadeTransition)
     }
 }
